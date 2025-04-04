@@ -117,6 +117,11 @@ public class JsonParser {
         updateFile();
     }
 
+    public static void setCenter(Location location) {
+        json.add("center", jsonArrayFromLocation(location));
+        updateFile();
+    }
+
     public static void addSpawner(BaseSpawner spawner) {
         JsonObject spawner_data = new JsonObject();
         JsonArray spawners = json.get("spawners").getAsJsonArray();

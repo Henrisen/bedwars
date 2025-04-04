@@ -63,7 +63,7 @@ public class Team {
     }
 
     public void tick() {
-        players.removeIf(OfflinePlayer::isOnline);
+        players.removeIf(player->!player.isOnline());
     }
 
     public ChatColor getChatColor() {

@@ -1,5 +1,6 @@
 package cloud.thehsi.hsi_bedwars.Commands;
 
+import cloud.thehsi.hsi_bedwars.BedwarsElements.JsonParser;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Spawners.*;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Spawners.Custom.DiamondSpawner;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Spawners.Custom.EmeraldSpawner;
@@ -9,6 +10,7 @@ import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.Bed;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.Team;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.TeamController;
 import cloud.thehsi.hsi_bedwars.BuildTracker;
+import cloud.thehsi.hsi_bedwars.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -54,14 +56,22 @@ public class BedwarsAdminCommand extends AdvancedCommand {
             case "add_spawner":
                 location.add(.5,.5,.5);
                 switch (strings[1].toLowerCase()) {
-                    case "iron" ->
+                    case "iron" -> {
                         SpawnerController.addAndRegisterSpawner(new IronSpawner(location));
-                    case "gold" ->
+                        commandSender.sendMessage(Main.makeDisplay() + "Created new " + strings[1] + " Spawner");
+                    }
+                    case "gold" -> {
                         SpawnerController.addAndRegisterSpawner(new GoldSpawner(location));
-                    case "diamond" ->
+                        commandSender.sendMessage(Main.makeDisplay() + "Created new " + strings[1] + " Spawner");
+                    }
+                    case "diamond" -> {
                         SpawnerController.addAndRegisterSpawner(new DiamondSpawner(location));
-                    case "emerald" ->
+                        commandSender.sendMessage(Main.makeDisplay() + "Created new " + strings[1] + " Spawner");
+                    }
+                    case "emerald" -> {
                         SpawnerController.addAndRegisterSpawner(new EmeraldSpawner(location));
+                        commandSender.sendMessage(Main.makeDisplay() + "Created new " + strings[1] + " Spawner");
+                    }
                     default ->
                         commandSender.sendMessage(ChatColor.RED + "Unknown Spawner Type: '" + strings[1].toLowerCase() + "'");
                 }
@@ -105,6 +115,7 @@ public class BedwarsAdminCommand extends AdvancedCommand {
                     team.getBed().update(bed1, bed2);
                     TeamController.updateTeam(team);
                 }
+                commandSender.sendMessage(Main.makeDisplay() + "Set Bed for Team " + strings[1]);
                 break;
             case "add_spawnpoint":
                 location.add(.5,.5,.5);
@@ -125,6 +136,12 @@ public class BedwarsAdminCommand extends AdvancedCommand {
                     team.getSpawnpoint().update(location);
                     TeamController.updateTeam(team);
                 }
+                commandSender.sendMessage(Main.makeDisplay() + "Set Spawnpoint for Team " + strings[1]);
+                break;
+            case "set_center":
+                location.add(.5,.5,.5);
+                JsonParser.setCenter(location);
+                commandSender.sendMessage(Main.makeDisplay() + "Set World Center");
                 break;
         }
 
@@ -139,6 +156,7 @@ public class BedwarsAdminCommand extends AdvancedCommand {
                 suggestions.add("add_bed");
                 suggestions.add("add_spawner");
                 suggestions.add("add_spawnpoint");
+                suggestions.add("set_center");
                 break;
             case 2:
                 switch (strings[0]) {
@@ -151,11 +169,14 @@ public class BedwarsAdminCommand extends AdvancedCommand {
                         suggestions.add("diamond");
                         suggestions.add("emerald");
                         break;
+                    case "set_center":
+                        suggestions.add("world");
+                        break;
                 }
                 break;
             case 3,4,5:
                 switch (strings[0]) {
-                    case "add_spawnpoint","add_spawner","add_bed":
+                    case "add_spawnpoint","add_spawner","add_bed","set_center":
                         Player p = (Player)commandSender;
                         RayTraceResult result = p.rayTraceBlocks(5);
                         if (strings.length == 3) {
