@@ -87,7 +87,7 @@ public class ICommand extends AdvancedCommand {
                 }
                 break;
             case 2:
-                for (int i = 1; i < 64; i++) {
+                for (int i = 1; i <= 64; i++) {
                     suggest.add(i+"");
                 }
                 break;

@@ -30,6 +30,8 @@ public class JoinCommand extends AdvancedCommand {
                     commandSender.sendMessage(Main.makeDisplay() + ChatColor.RED + "Unknown Team: " + strings[0]);
                     return false;
                 }
+                Team in = TeamController.getPlayerTeam((Player) commandSender);
+                if (in != null) in.removePlayer((Player) commandSender);
                 team.addPlayer((Player) commandSender);
                 commandSender.sendMessage(Main.makeDisplay() + "Joined Team: " + team.getChatColor() + team.getColor());
             }

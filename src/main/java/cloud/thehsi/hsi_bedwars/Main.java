@@ -25,8 +25,8 @@ public final class Main extends JavaPlugin {
             world.setGameRule(GameRule.KEEP_INVENTORY, true);
             world.setGameRule(GameRule.SHOW_DEATH_MESSAGES, false);
         }
-        pluginItems = new PluginItems(this);
-        new PluginListeners(this, tracker);
+        pluginItems = new PluginItems(this, tracker);
+        new PluginListeners(this, tracker, pluginItems);
         new PluginCommands(this, this, tracker, pluginItems);
         SpawnerController.init(this);
         TeamController.init(this);

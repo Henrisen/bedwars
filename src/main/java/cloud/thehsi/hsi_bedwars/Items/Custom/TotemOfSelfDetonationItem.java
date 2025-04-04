@@ -1,6 +1,7 @@
 package cloud.thehsi.hsi_bedwars.Items.Custom;
 
 import cloud.thehsi.hsi_bedwars.Items.BaseItem;
+import cloud.thehsi.hsi_bedwars.Items.PluginItems;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
@@ -10,12 +11,11 @@ import org.bukkit.event.entity.EntityResurrectEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemRarity;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class TotemOfSelfDetonationItem extends BaseItem {
-    public TotemOfSelfDetonationItem(Plugin plugin) {
-        super(plugin, Material.TOTEM_OF_UNDYING, "totem_of_self_detonation", "Totem of Self Detonation", false, meta -> {meta.setRarity(ItemRarity.RARE);return meta;});
+    public TotemOfSelfDetonationItem(PluginItems.ItemProvider provider) {
+        super(provider, Material.TOTEM_OF_UNDYING, "totem_of_self_detonation", "Totem of Self Detonation", false, meta -> {meta.setRarity(ItemRarity.RARE);return meta;});
     }
 
     @Override

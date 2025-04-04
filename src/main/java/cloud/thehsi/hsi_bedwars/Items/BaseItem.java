@@ -1,10 +1,10 @@
 package cloud.thehsi.hsi_bedwars.Items;
 
+import cloud.thehsi.hsi_bedwars.BuildTracker;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -22,13 +22,16 @@ abstract public class BaseItem implements Listener {
     Plugin plugin;
     Function<ItemMeta, ItemMeta> modifications;
     Boolean doesTick;
-    public BaseItem(Plugin plugin, Material type, String id, String name, Boolean doesTick, Function<ItemMeta, ItemMeta> modifications) {
+    BuildTracker buildTracker;
+    public BaseItem(PluginItems.ItemProvider provider, Material type, String id, String name, Boolean doesTick, Function<ItemMeta, ItemMeta> modifications) {
         this.itemType = type;
         this.itemId = id;
         this.itemName = name;
-        this.plugin = plugin;
+        this.plugin = provider.plugin();
         this.doesTick = doesTick;
         this.modifications = modifications;
+        this.buildTracker = provider.buildTracker();
+        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
     public static ItemMeta NONE(ItemMeta meta) {
@@ -37,6 +40,7 @@ abstract public class BaseItem implements Listener {
 
     public String getId() {return itemId;}
     public String getName() {return itemName;}
+    public BuildTracker getBuildTracker() {return buildTracker;}
 
     public ItemStack getDefaultStack() {
         ItemStack stack = new ItemStack(itemType, 1);
@@ -71,12 +75,6 @@ abstract public class BaseItem implements Listener {
 
     abstract public void onUse(PlayerInteractEvent event);
     abstract public void inventoryTick(Player player, ItemStack stack);
-
-    @EventHandler
-    private void use(PlayerInteractEvent event) {
-        if (!isThisItem(event.getItem())) return;
-        onUse(event);
-    }
 
     public ItemStack getInInventory(Player player) {
         for (ItemStack stack : player.getInventory()) {

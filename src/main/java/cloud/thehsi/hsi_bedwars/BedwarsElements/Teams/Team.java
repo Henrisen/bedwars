@@ -61,6 +61,12 @@ public class Team {
         player.setPlayerListName(getChatColor() + player.getName() + ChatColor.RESET);
     }
 
+    public void removePlayer(Player player) {
+        players.remove(player);
+        player.setDisplayName(ChatColor.RESET + player.getName() + ChatColor.RESET);
+        player.setPlayerListName(ChatColor.RESET + player.getName() + ChatColor.RESET);
+    }
+
     public void tick() {
         players.removeIf(player->!player.isOnline());
     }

@@ -1,6 +1,7 @@
 package cloud.thehsi.hsi_bedwars.Listeners;
 
 import cloud.thehsi.hsi_bedwars.BuildTracker;
+import cloud.thehsi.hsi_bedwars.Items.PluginItems;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
@@ -11,6 +12,7 @@ public class PluginListeners {
     Plugin plugin;
     PluginManager manager;
     BuildTracker tracker;
+    PluginItems pluginItems;
 
     private void register() {
         registerListener(plugin -> new BuildTrackerListener(plugin, tracker));
@@ -23,6 +25,7 @@ public class PluginListeners {
         registerListener(CustomMessageListener::new);
         registerListener(PlayerMovementListener::new);
         registerListener(MovementSpeedFixListener::new);
+        registerListener(plugin -> new PlayerItemUseListener(plugin, pluginItems));
     }
 
     private void registerListener(Function<Plugin, ? extends AdvancedListener> eventListener) {
@@ -30,10 +33,11 @@ public class PluginListeners {
         manager.registerEvents(listener, plugin);
     }
 
-    public PluginListeners(Plugin plugin, BuildTracker tracker) {
+    public PluginListeners(Plugin plugin, BuildTracker tracker, PluginItems pluginItems) {
         this.manager = Bukkit.getPluginManager();
         this.plugin = plugin;
         this.tracker = tracker;
+        this.pluginItems = pluginItems;
         register();
     }
 }
