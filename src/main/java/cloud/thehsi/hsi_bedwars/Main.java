@@ -4,6 +4,7 @@ import cloud.thehsi.hsi_bedwars.BedwarsElements.JsonParser;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Spawners.SpawnerController;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.TeamController;
 import cloud.thehsi.hsi_bedwars.Commands.PluginCommands;
+import cloud.thehsi.hsi_bedwars.Items.PluginItems;
 import cloud.thehsi.hsi_bedwars.Listeners.PluginListeners;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,6 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
     BuildTracker tracker = new BuildTracker();
+    public PluginItems pluginItems;
     @Override
     public void onEnable() {
         for (World world : Bukkit.getWorlds()) {
@@ -23,8 +25,9 @@ public final class Main extends JavaPlugin {
             world.setGameRule(GameRule.KEEP_INVENTORY, true);
             world.setGameRule(GameRule.SHOW_DEATH_MESSAGES, false);
         }
+        pluginItems = new PluginItems(this);
         new PluginListeners(this, tracker);
-        new PluginCommands(this, this, tracker);
+        new PluginCommands(this, this, tracker, pluginItems);
         SpawnerController.init(this);
         TeamController.init(this);
         JsonParser.loadFile();

@@ -22,6 +22,7 @@ public class PluginListeners {
         registerListener(plugin -> new AntiDirtPathDestructionListener(plugin, tracker));
         registerListener(CustomMessageListener::new);
         registerListener(PlayerMovementListener::new);
+        registerListener(MovementSpeedFixListener::new);
     }
 
     private void registerListener(Function<Plugin, ? extends AdvancedListener> eventListener) {

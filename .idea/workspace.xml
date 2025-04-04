@@ -4,52 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37867ce5-3ed0-4dd4-851f-05a6f22df877" name="Changes" comment="Updated Everything">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hsi_bedwars.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/JsonParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Spawners/BaseSpawner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Spawners/Custom/DiamondSpawner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Spawners/Custom/EmeraldSpawner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Spawners/Custom/GoldSpawner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Spawners/Custom/IronSpawner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Spawners/SpawnerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Spawners/TextSpawner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Bed.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Spawnpoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Team.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/TeamController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BuildTracker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/AdvancedCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/BedwarsAdminCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/JoinCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/MapResetCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/PluginCommands.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/ResetCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/AdvancedListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/AntiCropTramplingListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/AntiDirtPathDestructionListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/BuildTrackerListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/CustomMessageListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/ExplosionListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/FireballListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/PlayerMovementListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/PluginListeners.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/SnowballHitPlayerListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/TntPlaceListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+    <list default="true" id="37867ce5-3ed0-4dd4-851f-05a6f22df877" name="Changes" comment="Added Custom Item &quot;Totem Of Self Detonation&quot;&#10;Fixed a Bug with server crash when too much TNT detonates under player&#10;Added /i &lt;item&gt; [&lt;count&gt;] command to give player custom items">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/ICommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/BaseItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/TotemOfSelfDetonationItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/PluginItems.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/MovementSpeedFixListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/PluginCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/PluginCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/PluginListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/PluginListeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/TntPlaceListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/TntPlaceListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743730180183</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updated Everything">
+      <option name="closed" value="true" />
+      <created>1743730241445</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1743730241445</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -223,6 +199,7 @@
     <MESSAGE value="Added workspace.xml" />
     <MESSAGE value="Added workspace.xml&#10;And .gitignore" />
     <MESSAGE value="Updated Everything" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Everything" />
+    <MESSAGE value="Added Custom Item &quot;Totem Of Self Detonation&quot;&#10;Fixed a Bug with server crash when too much TNT detonates under player&#10;Added /i &lt;item&gt; [&lt;count&gt;] command to give player custom items" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Custom Item &quot;Totem Of Self Detonation&quot;&#10;Fixed a Bug with server crash when too much TNT detonates under player&#10;Added /i &lt;item&gt; [&lt;count&gt;] command to give player custom items" />
   </component>
 </project>

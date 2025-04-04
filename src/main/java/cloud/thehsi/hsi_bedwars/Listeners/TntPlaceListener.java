@@ -24,14 +24,14 @@ public class TntPlaceListener extends AdvancedListener {
         new BukkitRunnable() {
             @Override
             public void run() {
-                // Check if the fireball is still alive
+                // Check if the TNT is still alive
                 if (!tnt.isDead()) {
                     int fuse = tnt.getFuseTicks() - 2;
                     int seconds = fuse / 20;
                     int ms = fuse % 20 * 5;
                     tnt.setCustomName(seconds + ":" + String.format("%02d", ms));
                 } else {
-                    // Stop the task if the fireball is no longer alive
+                    // Stop the task if the TNT is no longer alive
                     cancel();
                 }
             }

@@ -16,3 +16,5 @@ commands:
     permission: bedwars.admin
   join:
     permission: bedwars.admin
+  i:
+    permission: bedwars.admin
