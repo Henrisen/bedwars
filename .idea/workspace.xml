@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37867ce5-3ed0-4dd4-851f-05a6f22df877" name="Changes" comment="Added Mines&#10;Fixed Bugs">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/MineItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/PlayerItemUseListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/StaffOfLightningItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/ICommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/ICommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/JoinCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/JoinCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/BaseItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/BaseItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/TotemOfSelfDetonationItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/TotemOfSelfDetonationItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/MineItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/MineItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/PluginItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/PluginItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/PluginListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/PluginListeners.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,8 +64,8 @@
       <recent name="C:\Users\Henri\IdeaProjects\hsi_bedwars\src\main\java\cloud\thehsi\hsi_bedwars\BedwarsElements" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="cloud.thehsi.hsi_bedwars.Listeners" />
       <recent name="cloud.thehsi.hsi_bedwars.Items.Custom" />
+      <recent name="cloud.thehsi.hsi_bedwars.Listeners" />
       <recent name="cloud.thehsi.hsi_bedwars.Commands" />
       <recent name="cloud.thehsi.hsi_bedwars.BedwarsElements.Spawners.Custom" />
       <recent name="cloud.thehsi.hsi_bedwars.BedwarsElements.Spawners" />
@@ -202,7 +195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743740244956</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added Mines&#10;Fixed Bugs">
+      <option name="closed" value="true" />
+      <created>1743805431344</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1743805431344</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

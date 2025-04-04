@@ -103,7 +103,9 @@ public class MineItem extends BaseItem implements Listener {
                     }
                 }
             }.runTaskTimer(plugin(), 0L, 1L);
-            getInInventory(event.getPlayer()).setAmount(getInInventory(event.getPlayer()).getAmount() - 1);
+            ItemStack stack = event.getItem();
+            assert stack != null;
+            stack.setAmount(stack.getAmount()-1);
             event.setCancelled(true);
         }
     }
