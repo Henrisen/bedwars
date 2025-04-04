@@ -16,6 +16,8 @@ public class PluginItems {
         this.plugin = plugin;
 
         TOTEM_OF_SELF_DETONATION = registerItem(TotemOfSelfDetonationItem::new);
+
+        Bukkit.getScheduler().runTaskTimer(plugin, () -> items.forEach(BaseItem::tick), 0, 1);
     }
 
     public BaseItem TOTEM_OF_SELF_DETONATION;

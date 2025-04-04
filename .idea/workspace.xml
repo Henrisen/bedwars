@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37867ce5-3ed0-4dd4-851f-05a6f22df877" name="Changes" comment="Added Custom Item &quot;Totem Of Self Detonation&quot;&#10;Fixed a Bug with server crash when too much TNT detonates under player&#10;Added /i &lt;item&gt; [&lt;count&gt;] command to give player custom items">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/ICommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/BaseItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/TotemOfSelfDetonationItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/PluginItems.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/MovementSpeedFixListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/PluginCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/PluginCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/PluginListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/PluginListeners.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/TntPlaceListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/TntPlaceListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/PluginItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/PluginItems.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743730241445</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added Custom Item &quot;Totem Of Self Detonation&quot;&#10;Fixed a Bug with server crash when too much TNT detonates under player&#10;Added /i &lt;item&gt; [&lt;count&gt;] command to give player custom items">
+      <option name="closed" value="true" />
+      <created>1743740081672</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1743740081672</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
