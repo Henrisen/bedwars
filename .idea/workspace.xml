@@ -4,34 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37867ce5-3ed0-4dd4-851f-05a6f22df877" name="Changes" comment="Updated vcs for IDEA">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="37867ce5-3ed0-4dd4-851f-05a6f22df877" name="Changes" comment="Added:&#10;- /bedwars_admin set_center world &lt;x&gt; &lt;y&gt; &lt;z&gt;&#10;- Fixed Bug revolving Automatically Kicking Players who are offline from there Team">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/JsonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/JsonParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/BedwarsAdminCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/BedwarsAdminCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/BedwarsElements/JsonParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/BedwarsElements/JsonParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Team.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Team.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/TeamController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/TeamController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/BedwarsElements/JsonParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Team.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/TeamController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/BuildTracker$CoordinateEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/BuildTracker$CoordinateEntry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/BuildTracker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/BuildTracker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/AdvancedCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/AdvancedCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/BedwarsAdminCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/BedwarsAdminCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/JoinCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/JoinCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/MapResetCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/MapResetCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/ResetCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/ResetCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/AntiCropTramplingListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/AntiCropTramplingListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/AntiDirtPathDestructionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/AntiDirtPathDestructionListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/BuildTrackerListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/BuildTrackerListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/CustomMessageListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/CustomMessageListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/BuildTracker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/AdvancedCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/BedwarsAdminCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/JoinCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/MapResetCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Commands/ResetCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/AntiCropTramplingListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/AntiDirtPathDestructionListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/BuildTrackerListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/CustomMessageListener.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/FireballListener$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/FireballListener$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/FireballListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/FireballListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/PlayerMovementListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/PlayerMovementListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/TntPlaceListener$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/TntPlaceListener$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/TntPlaceListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/TntPlaceListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hsi_bedwars-1.21.5-shaded.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/hsi_bedwars-1.21.5-shaded.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-hsi_bedwars-1.21.5.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-hsi_bedwars-1.21.5.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/FireballListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/PlayerMovementListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/TntPlaceListener$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Listeners/TntPlaceListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cloud/thehsi/hsi_bedwars/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hsi_bedwars-1.21.5-shaded.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-hsi_bedwars-1.21.5.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,16 +44,23 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2uPD3n4lXjWXSHRQE8JbGMiNGPW" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Maven.hsi_bedwars [package].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -152,12 +155,22 @@
       <option name="project" value="LOCAL" />
       <updated>1743726978230</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added:&#10;- /bedwars_admin set_center world &lt;x&gt; &lt;y&gt; &lt;z&gt;&#10;- Fixed Bug revolving Automatically Kicking Players who are offline from there Team">
+      <option name="closed" value="true" />
+      <created>1743729217906</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1743729217906</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added most Up-To-Date Version&#10;Features:&#10;- Spawners with Item and Text Displays&#10;- Per World Customizable Config File for Spawner Positions and Types, Teams, there Beds and Spawnpoints and the Map Center&#10;- Auto Map Protection and Auto Reset&#10;- Fireballs&#10;- TNT Autoignite&#10;- Snowballs deal damage and knockback&#10;- /reset&#10;- /bedwars_admin [add_bed | add_spawner |add_spawnpoint] to configure a new world (stores to .../world/bedwars.json)&#10;- Supports up to 8 Teams per map&#10;- /join [team] [player] Forces Player to join Team&#10;- Much More&#10;&#10;To Be Added:&#10;- Shop Keeper&#10;- More Items&#10;- Matchmaking&#10;- Auto Team Assigning&#10;- /bedwars_admin set_center &lt;x&gt; &lt;y&gt; &lt;z&gt;&#10;- Win Detection&#10;- Spawner Upgrades&#10;- Much More." />
     <MESSAGE value="Updated vcs for IDEA" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated vcs for IDEA" />
+    <MESSAGE value="Added:&#10;- /bedwars_admin set_center world &lt;x&gt; &lt;y&gt; &lt;z&gt;&#10;- Fixed Bug revolving Automatically Kicking Players who are offline from there Team" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added:&#10;- /bedwars_admin set_center world &lt;x&gt; &lt;y&gt; &lt;z&gt;&#10;- Fixed Bug revolving Automatically Kicking Players who are offline from there Team" />
   </component>
 </project>
