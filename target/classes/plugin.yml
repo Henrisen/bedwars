@@ -1,0 +1,18 @@
+name: hsi_bedwars
+version: '1.21.5'
+main: cloud.thehsi.hsi_bedwars.Main
+api-version: '1.21.5'
+prefix: bedwars
+authors: [ TheHSI; HMegaCrafter ]
+description: Bedwars
+website: https://thehsi.cloud
+load: STARTUP
+commands:
+  reset:
+    permission: bedwars.admin
+  map_reset:
+    permission: bedwars.admin
+  bedwars_admin:
+    permission: bedwars.admin
+  join:
+    permission: bedwars.admin
