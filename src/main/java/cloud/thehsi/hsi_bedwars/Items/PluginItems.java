@@ -1,10 +1,7 @@
 package cloud.thehsi.hsi_bedwars.Items;
 
 import cloud.thehsi.hsi_bedwars.BuildTracker;
-import cloud.thehsi.hsi_bedwars.Items.Custom.BridgeEggItem;
-import cloud.thehsi.hsi_bedwars.Items.Custom.MineItem;
-import cloud.thehsi.hsi_bedwars.Items.Custom.StaffOfLightningItem;
-import cloud.thehsi.hsi_bedwars.Items.Custom.TotemOfSelfDetonationItem;
+import cloud.thehsi.hsi_bedwars.Items.Custom.*;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -26,6 +23,7 @@ public class PluginItems {
         BaseItem MINE = registerItem(MineItem::new);
         BaseItem STAFF_OF_LIGHTNING = registerItem(StaffOfLightningItem::new);
         BaseItem BRIDGE_EGG = registerItem(BridgeEggItem::new);
+        BaseItem TOTEM_OF_KEEP_INVENTORY = registerItem(TotemOfKeepInventoryItem::new);
 
         Bukkit.getScheduler().runTaskTimer(plugin, () -> items.forEach(BaseItem::tick), 0, 1);
     }

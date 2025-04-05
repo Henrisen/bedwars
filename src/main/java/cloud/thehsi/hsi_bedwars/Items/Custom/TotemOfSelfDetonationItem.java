@@ -26,6 +26,7 @@ public class TotemOfSelfDetonationItem extends BaseItem {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onDeath(EntityResurrectEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
+        if (countInInventory(player) == 0) return;
         for (int i = Math.min(10, countInInventory(player)); i != 0; i--) {
             int fuseTick = 20 * 2; // 2 Seconds
             TNTPrimed tnt = player.getWorld().spawn(player.getLocation().add(.5,0,.5), TNTPrimed.class);

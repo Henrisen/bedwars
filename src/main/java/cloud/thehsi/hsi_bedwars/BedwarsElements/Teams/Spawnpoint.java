@@ -8,6 +8,9 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
+import static java.lang.Math.atan2;
+import static java.lang.Math.toDegrees;
+
 
 public class Spawnpoint {
     Location location;
@@ -19,13 +22,41 @@ public class Spawnpoint {
         this.plugin = plugin;
     }
 
+    private void applyRotateToCenter() {
+        Location center = JsonParser.getCenter();
+        double dx = center.getX() - location.getX();
+        double dz = center.getZ() - location.getZ();
+
+        float yaw = (float) toDegrees(atan2(-dx, dz));
+
+        yaw = Math.round(yaw / 90f) * 90f;
+
+        location.setYaw(yaw);
+        location.setPitch(0);
+    }
+
+    private Location rotateToSpawnpoint(Location l) {
+        double dx = location.getX() - l.getX();
+        double dz = location.getZ() - l.getZ();
+
+        float yaw = (float) toDegrees(atan2(-dx, dz));
+
+        yaw = Math.round(yaw / 90f) * 90f;
+
+        l.setYaw(yaw);
+        l.setPitch(0);
+        return l;
+    }
+
     public void update(Location location) {
         this.location = location;
     }
 
     public void respawnPlayer(Player player) {
         player.setGameMode(GameMode.SPECTATOR);
-        player.teleport(JsonParser.getCenter());
+        Location center = JsonParser.getCenter().clone();
+        player.teleport(rotateToSpawnpoint(center));
+        applyRotateToCenter();
 
         if (team.bed.isDestroyed()) {
             player.sendTitle(ChatColor.RED + "You Died!", "" , 0 ,80 ,20);
