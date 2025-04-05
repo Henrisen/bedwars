@@ -6,7 +6,7 @@ prefix: bedwars
 authors: [ TheHSI; HMegaCrafter ]
 description: Bedwars
 website: https://thehsi.cloud
-load: STARTUP
+load: POSTWORLD
 commands:
   reset:
     permission: bedwars.admin
