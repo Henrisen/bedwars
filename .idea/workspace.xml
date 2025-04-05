@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37867ce5-3ed0-4dd4-851f-05a6f22df877" name="Changes" comment="Added Mines&#10;Fixed Bugs">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/StaffOfLightningItem.java" afterDir="false" />
+    <list default="true" id="37867ce5-3ed0-4dd4-851f-05a6f22df877" name="Changes" comment="Rebalanced Mines&#10;Added Bridge Egg">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/BridgeEggItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Team.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/MineItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/MineItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/PluginItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/PluginItems.java" afterDir="false" />
     </list>
@@ -203,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743805431344</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added StaffOfLightning&#10;Bug Fixes for Mine">
+      <option name="closed" value="true" />
+      <created>1743810349345</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1743810349345</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -217,6 +226,8 @@
     <MESSAGE value="Added Custom Item &quot;Totem Of Self Detonation&quot;&#10;Fixed a Bug with server crash when too much TNT detonates under player&#10;Added /i &lt;item&gt; [&lt;count&gt;] command to give player custom items" />
     <MESSAGE value="Added Ticking Support for Items" />
     <MESSAGE value="Added Mines&#10;Fixed Bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Mines&#10;Fixed Bugs" />
+    <MESSAGE value="Added StaffOfLightning&#10;Bug Fixes for Mine" />
+    <MESSAGE value="Rebalanced Mines&#10;Added Bridge Egg" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rebalanced Mines&#10;Added Bridge Egg" />
   </component>
 </project>

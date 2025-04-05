@@ -94,6 +94,7 @@ public class MineItem extends BaseItem implements Listener {
                             if ((TeamController.getPlayerTeam(player) != team && team != null) || (event.getPlayer() != player && team == null)) {
                                 TNTPrimed tnt = (TNTPrimed) display.getWorld().spawnEntity(display.getLocation(), EntityType.TNT);
                                 tnt.setFuseTicks(1);
+                                tnt.setYield(1.5f);
                                 display.remove();
                                 target.setType(Material.AIR);
                                 cancel();

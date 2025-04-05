@@ -3,6 +3,7 @@ package cloud.thehsi.hsi_bedwars.BedwarsElements.Teams;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -37,6 +38,20 @@ public class Team {
         this.color = color;
         this.spawnpoint = new Spawnpoint(spawnpoint, this, plugin);
         this.bed = new Bed(bed1, bed2, this);
+    }
+
+    public Material getWool() {
+        return switch (color) {
+            case "red" -> Material.RED_WOOL;
+            case "orange" -> Material.ORANGE_WOOL;
+            case "yellow" -> Material.YELLOW_WOOL;
+            case "green" -> Material.LIME_WOOL;
+            case "blue" -> Material.LIGHT_BLUE_WOOL;
+            case "purple" -> Material.PURPLE_WOOL;
+            case "pink" -> Material.PINK_WOOL;
+            case "white" -> Material.WHITE_WOOL;
+            default -> null;
+        };
     }
 
     public String renderIcon() {
