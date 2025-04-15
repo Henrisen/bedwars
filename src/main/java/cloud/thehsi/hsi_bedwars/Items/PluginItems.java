@@ -24,6 +24,9 @@ public class PluginItems {
         BaseItem STAFF_OF_LIGHTNING = registerItem(StaffOfLightningItem::new);
         BaseItem BRIDGE_EGG = registerItem(BridgeEggItem::new);
         BaseItem TOTEM_OF_KEEP_INVENTORY = registerItem(TotemOfKeepInventoryItem::new);
+        BaseItem JUMP_PAD = registerItem(JumpPadItem::new);
+        BaseItem THE_CHANCE = registerItem(TheChanceItem::new);
+        BaseItem WOOL = registerItem(WoolItem::new);
 
         Bukkit.getScheduler().runTaskTimer(plugin, () -> items.forEach(BaseItem::tick), 0, 1);
     }
@@ -50,8 +53,6 @@ public class PluginItems {
         BuildTracker buildTracker;
 
         public ItemProvider(Plugin plugin, BuildTracker buildTracker) {
-            System.out.println(plugin);
-            System.out.println(buildTracker);
             this.plugin = plugin;
             this.buildTracker = buildTracker;
         }

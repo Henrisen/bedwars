@@ -59,7 +59,7 @@ public class BridgeEggItem extends BaseItem {
                     for (int z = -1; z <= 1; z++) {
                         Block b = block.getRelative(x, 0, z);
                         if (!b.getType().isAir()) continue;
-                        getBuildTracker().registerChange(b, b.getType(), false);
+                        getBuildTracker().registerChange(b, b.getBlockData(), false);
                         if (team == null)
                             b.setType(Material.RED_WOOL);
                         else

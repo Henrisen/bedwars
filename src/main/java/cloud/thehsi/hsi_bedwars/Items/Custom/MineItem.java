@@ -81,12 +81,32 @@ public class MineItem extends BaseItem implements Listener {
             }else {
                 display.setBlock(clicked.getBlockData());
             }
-            getBuildTracker().registerChange(target, target.getType(), false);
+            getBuildTracker().registerChange(target, target.getBlockData(), false);
             target.setType(Material.BARRIER);
             Team team = TeamController.getPlayerTeam(event.getPlayer());
+            final int[] tick = {0};
+            int ticks = 60;
             new BukkitRunnable() {
                 @Override
                 public void run() {
+                    tick[0]++;
+                    tick[0] %= ticks;
+                    double x = tick[0];
+                    int d =
+                            (int) (
+                                Math.min(
+                                    Math.sqrt(x/25) * 7, 7
+                                ) + Math.min(
+                                    Math.sqrt(-((x-ticks) / 25)) * 7, 7
+                                ) + 1
+                            );
+                    if (
+                        display.getLocation().getBlock().getLightFromBlocks() >
+                        display.getLocation().getBlock().getLightFromSky()
+                    )
+                        display.setBrightness(new Display.Brightness(0, d));
+                    else
+                        display.setBrightness(new Display.Brightness(d, 0));
                     display.getWorld().spawnParticle(Particle.SMOKE, display.getLocation().add(.5,.5,.5), 1, 0.25, 0.25, 0.25, 0);
                     if (display.getLocation().getBlock().getType() != Material.BARRIER) cancel();
                     for (Player player : display.getWorld().getEntitiesByClass(Player.class)) {

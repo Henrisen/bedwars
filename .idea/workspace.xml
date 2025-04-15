@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37867ce5-3ed0-4dd4-851f-05a6f22df877" name="Changes" comment="- Added Totem of Keep Inventory&#10;- Fixed Respawn Bug: Player is not Correctly  Rotated on Spawn&#10;- When waiting for respawn, you now look towards your base by default.">
+    <list default="true" id="37867ce5-3ed0-4dd4-851f-05a6f22df877" name="Changes" comment="- Added Items:&#10;  - Jump Pad&#10;  - The Chance&#10;  - Wool&#10;&#10;Fixed Build Tracker Bugs regarding blocks not being put back in the correct Block State&#10;&#10;Changed the Mine to make it easier to see">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/JumpPadItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/TheChanceItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/WoolItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BuildTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BuildTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/BridgeEggItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/BridgeEggItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/MineItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/MineItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/PluginItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/PluginItems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/AntiDirtPathDestructionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/AntiDirtPathDestructionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/BuildTrackerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/BuildTrackerListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +40,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -58,7 +66,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font"
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -230,7 +238,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743864654249</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="- CRITICAL BUGFIX:&#10;  Plugin Errors on Server Start (Not Reloads) due to loading before World.">
+      <option name="closed" value="true" />
+      <created>1743879258401</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1743879258401</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -247,6 +263,8 @@
     <MESSAGE value="Added StaffOfLightning&#10;Bug Fixes for Mine" />
     <MESSAGE value="Rebalanced Mines&#10;Added Bridge Egg" />
     <MESSAGE value="- Added Totem of Keep Inventory&#10;- Fixed Respawn Bug: Player is not Correctly  Rotated on Spawn&#10;- When waiting for respawn, you now look towards your base by default." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added Totem of Keep Inventory&#10;- Fixed Respawn Bug: Player is not Correctly  Rotated on Spawn&#10;- When waiting for respawn, you now look towards your base by default." />
+    <MESSAGE value="- CRITICAL BUGFIX:&#10;  Plugin Errors on Server Start (Not Reloads) due to loading before World." />
+    <MESSAGE value="- Added Items:&#10;  - Jump Pad&#10;  - The Chance&#10;  - Wool&#10;&#10;Fixed Build Tracker Bugs regarding blocks not being put back in the correct Block State&#10;&#10;Changed the Mine to make it easier to see" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added Items:&#10;  - Jump Pad&#10;  - The Chance&#10;  - Wool&#10;&#10;Fixed Build Tracker Bugs regarding blocks not being put back in the correct Block State&#10;&#10;Changed the Mine to make it easier to see" />
   </component>
 </project>

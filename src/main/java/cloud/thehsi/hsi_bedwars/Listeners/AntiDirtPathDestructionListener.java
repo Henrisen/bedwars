@@ -15,7 +15,7 @@ public class AntiDirtPathDestructionListener extends AdvancedListener{
     private void blockPhysics(BlockPhysicsEvent event)  {
         if (event.getBlock().getType() == Material.DIRT_PATH) {
             if (!event.getBlock().getRelative(BlockFace.UP).getType().isAir())
-                tracker.registerChange(event.getBlock(), Material.DIRT_PATH, true);
+                tracker.registerChange(event.getBlock(), Material.DIRT_PATH.createBlockData(), true);
         }
     }
 }
