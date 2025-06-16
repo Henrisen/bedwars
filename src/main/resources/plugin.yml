@@ -16,5 +16,7 @@ commands:
     permission: bedwars.admin
   join:
     permission: bedwars.admin
+  revive:
+    permission: bedwars.admin
   i:
     permission: bedwars.admin

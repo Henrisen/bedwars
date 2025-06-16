@@ -26,6 +26,7 @@ public class PluginListeners {
         registerListener(PlayerMovementListener::new);
         registerListener(MovementSpeedFixListener::new);
         registerListener(plugin -> new PlayerItemUseListener(plugin, pluginItems));
+        registerListener(AntiBedClickListener::new);
     }
 
     private void registerListener(Function<Plugin, ? extends AdvancedListener> eventListener) {

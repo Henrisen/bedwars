@@ -74,6 +74,9 @@ public class Team implements Listener {
     }
 
     public void addPlayer(Player player) {
+        Team pteam = TeamController.getPlayerTeam(player);
+        if (pteam!=null) pteam.removePlayer(player);
+
         players.add(player);
         player.setDisplayName(getChatColor() + player.getName() + ChatColor.RESET);
         player.setPlayerListName(getChatColor() + player.getName() + ChatColor.RESET);

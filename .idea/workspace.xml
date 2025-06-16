@@ -4,29 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37867ce5-3ed0-4dd4-851f-05a6f22df877" name="Changes" comment="- Added Items:&#10;  - Replacement Bed (WIP)&#10;&#10;Changes:&#10;- Reworked Respawn Cooldown&#10;- Reworked Death Messages&#10;- Reworked Wool Item to Auto Adjust Color&#10;- Reworked Wool Item to Retain Data when Placed&#10;- Added Utility Class with Messaging Functions&#10;- Adjusted /i to tick once before giving item to player&#10;- Clear all Entities on Server Start&#10;- Added Tick all in Inventory Property to BaseItem (Ticks for All instead of only first Item)&#10;- Made BaseItem::inventoryTick return ItemStack instead of void&#10;- Added Bed Broken Alert&#10;- Added Auto Team Kick when death without Bed&#10;- Bed::getBedType is now public&#10;- Spawners now Check if Chunk is Loaded to Prevent spawning thousands of Items due to being unable to count in unloaded Chunks&#10;- Revamped Respawn Messages&#10;- Adopted Hypixel Messages">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Utils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/BedItem.java" afterDir="false" />
+    <list default="true" id="37867ce5-3ed0-4dd4-851f-05a6f22df877" name="Changes" comment="Changes:&#10;- Improved Respawn Text&#10;- Added Revive Command&#10;- Added Shuffle Mode to Join Command&#10;- Added TeamController::getRandomTeam&#10;- Added Sound on Respawn&#10;- Added Visual Indicator for Replacement Bed Usage&#10;&#10;Bug Fixes:&#10;- Team Player Death Listener not Registered&#10;- Removed POI Registration Error in Console&#10;- Removed Ability to Set Spawnpoint in Beds / Trigger Set Spawnpoint Message&#10;- When Joining a new Team, Team::addPlayer will auto kick you from your old Team">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/ReviveCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/AntiBedClickListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Spawners/BaseSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Spawners/BaseSpawner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Bed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Bed.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Spawnpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Spawnpoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BuildTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BuildTracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/ICommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/ICommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/BaseItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/BaseItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/BridgeEggItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/BridgeEggItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/JumpPadItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/JumpPadItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/MineItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/MineItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/StaffOfLightningItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/StaffOfLightningItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/TheChanceItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/TheChanceItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/TotemOfKeepInventoryItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/TotemOfKeepInventoryItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/TotemOfSelfDetonationItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/TotemOfSelfDetonationItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/WoolItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/WoolItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/PluginItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/PluginItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/CustomMessageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/CustomMessageListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/PlayerMovementListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/PlayerMovementListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/TeamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams/TeamController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/JoinCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/JoinCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/PluginCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Commands/PluginCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/BedItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Items/Custom/BedItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/PluginListeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cloud/thehsi/hsi_bedwars/Listeners/PluginListeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,9 +78,9 @@
       <recent name="C:\Users\Henri\IdeaProjects\hsi_bedwars\src\main\java\cloud\thehsi\hsi_bedwars\BedwarsElements" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="cloud.thehsi.hsi_bedwars.Items.Custom" />
       <recent name="cloud.thehsi.hsi_bedwars.Listeners" />
       <recent name="cloud.thehsi.hsi_bedwars.Commands" />
+      <recent name="cloud.thehsi.hsi_bedwars.Items.Custom" />
       <recent name="cloud.thehsi.hsi_bedwars.BedwarsElements.Spawners.Custom" />
       <recent name="cloud.thehsi.hsi_bedwars.BedwarsElements.Spawners" />
     </key>
@@ -266,7 +257,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744753066221</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="- Added Items:&#10;  - Replacement Bed (WIP)&#10;&#10;Changes:&#10;- Reworked Respawn Cooldown&#10;- Reworked Death Messages&#10;- Reworked Wool Item to Auto Adjust Color&#10;- Reworked Wool Item to Retain Data when Placed&#10;- Added Utility Class with Messaging Functions&#10;- Adjusted /i to tick once before giving item to player&#10;- Clear all Entities on Server Start&#10;- Added Tick all in Inventory Property to BaseItem (Ticks for All instead of only first Item)&#10;- Made BaseItem::inventoryTick return ItemStack instead of void&#10;- Added Bed Broken Alert&#10;- Added Auto Team Kick when death without Bed&#10;- Bed::getBedType is now public&#10;- Spawners now Check if Chunk is Loaded to Prevent spawning thousands of Items due to being unable to count in unloaded Chunks&#10;- Revamped Respawn Messages&#10;- Adopted Hypixel Messages&#10;&#10;+ Cleaned Code Up">
+      <option name="closed" value="true" />
+      <created>1750110679761</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1750110679761</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -286,6 +285,8 @@
     <MESSAGE value="- CRITICAL BUGFIX:&#10;  Plugin Errors on Server Start (Not Reloads) due to loading before World." />
     <MESSAGE value="- Added Items:&#10;  - Jump Pad&#10;  - The Chance&#10;  - Wool&#10;&#10;Fixed Build Tracker Bugs regarding blocks not being put back in the correct Block State&#10;&#10;Changed the Mine to make it easier to see" />
     <MESSAGE value="- Added Items:&#10;  - Replacement Bed (WIP)&#10;&#10;Changes:&#10;- Reworked Respawn Cooldown&#10;- Reworked Death Messages&#10;- Reworked Wool Item to Auto Adjust Color&#10;- Reworked Wool Item to Retain Data when Placed&#10;- Added Utility Class with Messaging Functions&#10;- Adjusted /i to tick once before giving item to player&#10;- Clear all Entities on Server Start&#10;- Added Tick all in Inventory Property to BaseItem (Ticks for All instead of only first Item)&#10;- Made BaseItem::inventoryTick return ItemStack instead of void&#10;- Added Bed Broken Alert&#10;- Added Auto Team Kick when death without Bed&#10;- Bed::getBedType is now public&#10;- Spawners now Check if Chunk is Loaded to Prevent spawning thousands of Items due to being unable to count in unloaded Chunks&#10;- Revamped Respawn Messages&#10;- Adopted Hypixel Messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added Items:&#10;  - Replacement Bed (WIP)&#10;&#10;Changes:&#10;- Reworked Respawn Cooldown&#10;- Reworked Death Messages&#10;- Reworked Wool Item to Auto Adjust Color&#10;- Reworked Wool Item to Retain Data when Placed&#10;- Added Utility Class with Messaging Functions&#10;- Adjusted /i to tick once before giving item to player&#10;- Clear all Entities on Server Start&#10;- Added Tick all in Inventory Property to BaseItem (Ticks for All instead of only first Item)&#10;- Made BaseItem::inventoryTick return ItemStack instead of void&#10;- Added Bed Broken Alert&#10;- Added Auto Team Kick when death without Bed&#10;- Bed::getBedType is now public&#10;- Spawners now Check if Chunk is Loaded to Prevent spawning thousands of Items due to being unable to count in unloaded Chunks&#10;- Revamped Respawn Messages&#10;- Adopted Hypixel Messages" />
+    <MESSAGE value="- Added Items:&#10;  - Replacement Bed (WIP)&#10;&#10;Changes:&#10;- Reworked Respawn Cooldown&#10;- Reworked Death Messages&#10;- Reworked Wool Item to Auto Adjust Color&#10;- Reworked Wool Item to Retain Data when Placed&#10;- Added Utility Class with Messaging Functions&#10;- Adjusted /i to tick once before giving item to player&#10;- Clear all Entities on Server Start&#10;- Added Tick all in Inventory Property to BaseItem (Ticks for All instead of only first Item)&#10;- Made BaseItem::inventoryTick return ItemStack instead of void&#10;- Added Bed Broken Alert&#10;- Added Auto Team Kick when death without Bed&#10;- Bed::getBedType is now public&#10;- Spawners now Check if Chunk is Loaded to Prevent spawning thousands of Items due to being unable to count in unloaded Chunks&#10;- Revamped Respawn Messages&#10;- Adopted Hypixel Messages&#10;&#10;+ Cleaned Code Up" />
+    <MESSAGE value="Changes:&#10;- Improved Respawn Text&#10;- Added Revive Command&#10;- Added Shuffle Mode to Join Command&#10;- Added TeamController::getRandomTeam&#10;- Added Sound on Respawn&#10;- Added Visual Indicator for Replacement Bed Usage&#10;&#10;Bug Fixes:&#10;- Team Player Death Listener not Registered&#10;- Removed POI Registration Error in Console&#10;- Removed Ability to Set Spawnpoint in Beds / Trigger Set Spawnpoint Message&#10;- When Joining a new Team, Team::addPlayer will auto kick you from your old Team" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes:&#10;- Improved Respawn Text&#10;- Added Revive Command&#10;- Added Shuffle Mode to Join Command&#10;- Added TeamController::getRandomTeam&#10;- Added Sound on Respawn&#10;- Added Visual Indicator for Replacement Bed Usage&#10;&#10;Bug Fixes:&#10;- Team Player Death Listener not Registered&#10;- Removed POI Registration Error in Console&#10;- Removed Ability to Set Spawnpoint in Beds / Trigger Set Spawnpoint Message&#10;- When Joining a new Team, Team::addPlayer will auto kick you from your old Team" />
   </component>
 </project>

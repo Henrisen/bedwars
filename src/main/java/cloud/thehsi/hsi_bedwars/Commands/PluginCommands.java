@@ -22,6 +22,7 @@ public class PluginCommands {
         registerCommand("map_reset", plugin -> new MapResetCommand(plugin, tracker));
         registerCommand("bedwars_admin", plugin -> new BedwarsAdminCommand(plugin, tracker));
         registerCommand("join", JoinCommand::new);
+        registerCommand("revive", ReviveCommand::new);
         registerCommand("i", plugin -> new ICommand(plugin, pluginItems));
     }
 

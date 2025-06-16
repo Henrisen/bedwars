@@ -1,10 +1,7 @@
 package cloud.thehsi.hsi_bedwars.BedwarsElements.Teams;
 
 import cloud.thehsi.hsi_bedwars.BedwarsElements.JsonParser;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -66,7 +63,7 @@ public class Spawnpoint {
         for (int i = 5; i > 0; i--) {
             int finalI = i;
             Bukkit.getScheduler().runTaskLater(plugin, () -> {
-                player.sendTitle(ChatColor.RED + "YOU DIED!", ChatColor.YELLOW  + "You will respawn in " +  ChatColor.RED + finalI + ChatColor.YELLOW + " seconds!" , 0 ,21 ,0);
+                player.sendTitle(ChatColor.RED + (team.bed.isDestroyed()?"BED DESTROYED!":"YOU DIED!"), ChatColor.YELLOW  + "You will respawn in " +  ChatColor.RED + finalI + ChatColor.YELLOW + " seconds!" , 0 ,21 ,0);
                 player.sendMessage(ChatColor.YELLOW  + "You will respawn in " +  ChatColor.RED + finalI + ChatColor.YELLOW + " seconds!");
             },(5 - i) * 20L);
         }

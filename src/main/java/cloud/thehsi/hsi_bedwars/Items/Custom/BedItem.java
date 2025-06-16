@@ -2,6 +2,7 @@ package cloud.thehsi.hsi_bedwars.Items.Custom;
 
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.Team;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.TeamController;
+import cloud.thehsi.hsi_bedwars.BedwarsElements.Utils;
 import cloud.thehsi.hsi_bedwars.Items.BaseItem;
 import cloud.thehsi.hsi_bedwars.Items.PluginItems;
 import org.bukkit.Material;
@@ -37,6 +38,7 @@ public class BedItem extends BaseItem {
             stack.setAmount(0);
         }else if (team.getBed().isDestroyed()) {
             team.getBed().place();
+            Utils.broadcastBedReplacement(team, player);
             stack.setAmount(0);
         } else {
             stack.setType(team.getBed().getBedType());

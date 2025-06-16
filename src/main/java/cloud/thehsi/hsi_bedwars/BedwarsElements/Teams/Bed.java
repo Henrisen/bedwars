@@ -38,6 +38,9 @@ public class Bed {
     public void place() {
         BlockFace facing = getFacing();
         assert facing!=null;
+        part1.getBlock().setType(Material.AIR);
+        part2.getBlock().setType(Material.AIR);
+
         part1.getBlock().setType(getBedType(), false);
         org.bukkit.block.data.type.Bed bed1_bed = (org.bukkit.block.data.type.Bed) part1.getBlock().getBlockData();
         bed1_bed.setPart(org.bukkit.block.data.type.Bed.Part.FOOT);
@@ -48,7 +51,7 @@ public class Bed {
         org.bukkit.block.data.type.Bed bed2_bed = (org.bukkit.block.data.type.Bed) part2.getBlock().getBlockData();
         bed2_bed.setPart(org.bukkit.block.data.type.Bed.Part.HEAD);
         bed2_bed.setFacing(facing);
-        part2.getBlock().setBlockData(bed2_bed, true);
+        part2.getBlock().setBlockData(bed2_bed, false);
     }
 
     public void remove() {
