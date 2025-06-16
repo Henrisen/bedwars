@@ -22,7 +22,7 @@ import org.bukkit.util.Vector;
 
 public class BridgeEggItem extends BaseItem {
     public BridgeEggItem(PluginItems.ItemProvider provider) {
-        super(provider, Material.BLUE_EGG, "bridge_egg", "Bridge Egg", false, meta -> {meta.setRarity(ItemRarity.UNCOMMON);return meta;});
+        super(provider, Material.BLUE_EGG, "bridge_egg", "Bridge Egg", false, false, meta -> {meta.setRarity(ItemRarity.UNCOMMON);return meta;});
     }
 
     @EventHandler
@@ -74,5 +74,5 @@ public class BridgeEggItem extends BaseItem {
     public void onUse(PlayerInteractEvent event) {}
 
     @Override
-    public void inventoryTick(Player player, ItemStack stack) {}
+    public ItemStack inventoryTick(Player player, ItemStack stack) { return stack; }
 }

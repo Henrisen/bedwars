@@ -33,6 +33,7 @@ public abstract class BaseSpawner {
     void spawnItem(Location location, ItemStack stack) {
         World world = location.getWorld();
         assert world != null;
+        if (!world.isChunkLoaded(location.getChunk())) return;
         Item item = world.dropItem(location, stack);
         item.setVelocity(item.getVelocity().multiply(.25));
     }
@@ -40,6 +41,7 @@ public abstract class BaseSpawner {
     int countItems(Location location, Material type) {
         World world = location.getWorld();
         if (world==null) return Integer.MAX_VALUE;
+        if (!world.isChunkLoaded(location.getChunk())) return Integer.MAX_VALUE;
         int count = 0;
         for (Entity entity : world.getEntities())
         {

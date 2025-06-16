@@ -19,6 +19,10 @@ public final class Main extends JavaPlugin {
     public PluginItems pluginItems;
     @Override
     public void onEnable() {
+        for (Entity entity : Bukkit.getWorlds().getFirst().getEntities()) {
+            if (!(entity instanceof Player)) entity.remove();
+        }
+
         for (World world : Bukkit.getWorlds()) {
             world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
             world.setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true);
@@ -40,6 +44,7 @@ public final class Main extends JavaPlugin {
         tracker.undoChanges();
         SpawnerController.remove();
         TeamController.remove();
+
         for (Entity entity : Bukkit.getWorlds().getFirst().getEntities()) {
             if (!(entity instanceof Player)) entity.remove();
         }

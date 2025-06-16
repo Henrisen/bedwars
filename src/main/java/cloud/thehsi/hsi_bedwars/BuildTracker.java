@@ -3,6 +3,7 @@ package cloud.thehsi.hsi_bedwars;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.Bed;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.Team;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.TeamController;
+import cloud.thehsi.hsi_bedwars.BedwarsElements.Utils;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Ageable;
@@ -104,6 +105,7 @@ public class BuildTracker {
             Team team = TeamController.getBedOwner(block.getLocation());
             Team playerTeam = TeamController.getPlayerTeam(event.getPlayer());
             if (team != null && !team.equals(playerTeam)) {
+                Utils.broadcastBedDestruct(team, event.getPlayer());
                 event.setDropItems(false);
                 return true;
             }

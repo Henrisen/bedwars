@@ -20,7 +20,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class MineItem extends BaseItem implements Listener {
     public MineItem(PluginItems.ItemProvider provider) {
-        super(provider, Material.BLAZE_POWDER, "mine", "Mine", false, meta -> {meta.setRarity(ItemRarity.RARE);return meta;});
+        super(provider, Material.BLAZE_POWDER, "mine", "Mine", false, false, meta -> {meta.setRarity(ItemRarity.RARE);return meta;});
     }
 
     private Player getPlayerOnBlock(Location location) {
@@ -131,6 +131,6 @@ public class MineItem extends BaseItem implements Listener {
         }
     }
     @Override
-    public void inventoryTick(Player player, ItemStack stack) {}
+    public ItemStack inventoryTick(Player player, ItemStack stack) { return stack; }
 
 }

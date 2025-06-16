@@ -59,19 +59,23 @@ public class Spawnpoint {
         applyRotateToCenter();
 
         if (team.bed.isDestroyed()) {
-            player.sendTitle(ChatColor.RED + "You Died!", "" , 0 ,80 ,20);
+            player.sendTitle(ChatColor.RED + "YOU DIED!", "" , 0 ,80 ,20);
             return;
         }
 
-        player.sendTitle(ChatColor.RED + "You Died!", "Respawning in 5..." , 0 ,21 ,0);
-        Bukkit.getScheduler().runTaskLater(plugin, () -> player.sendTitle(ChatColor.RED + "You Died!", "Respawning in 4..." , 0 ,21 ,0),20);
-        Bukkit.getScheduler().runTaskLater(plugin, () -> player.sendTitle(ChatColor.RED + "You Died!", "Respawning in 3..." , 0 ,21 ,0),40);
-        Bukkit.getScheduler().runTaskLater(plugin, () -> player.sendTitle(ChatColor.RED + "You Died!", "Respawning in 2..." , 0 ,21 ,0),60);
-        Bukkit.getScheduler().runTaskLater(plugin, () -> player.sendTitle(ChatColor.RED + "You Died!", "Respawning in 1..." , 0 ,21 ,0),80);
+        for (int i = 5; i > 0; i--) {
+            int finalI = i;
+            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                player.sendTitle(ChatColor.RED + "YOU DIED!", ChatColor.YELLOW  + "You will respawn in " +  ChatColor.RED + finalI + ChatColor.YELLOW + " seconds!" , 0 ,21 ,0);
+                player.sendMessage(ChatColor.YELLOW  + "You will respawn in " +  ChatColor.RED + finalI + ChatColor.YELLOW + " seconds!");
+            },(5 - i) * 20L);
+        }
+
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
             player.teleport(location);
             player.setGameMode(GameMode.SURVIVAL);
-            player.sendTitle(ChatColor.RED + "You Died!", "Respawning Now" , 0 ,20 ,20);
+            player.sendTitle(ChatColor.GREEN + "RESPAWNED!", "" , 0 ,20 ,20);
+            player.sendMessage(ChatColor.YELLOW + "You have respawned!");
         },100);
     }
 

@@ -5,13 +5,16 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Team {
+public class Team implements Listener {
     String color;
     ChatColor chatColor;
     Spawnpoint spawnpoint;
@@ -74,12 +77,14 @@ public class Team {
         players.add(player);
         player.setDisplayName(getChatColor() + player.getName() + ChatColor.RESET);
         player.setPlayerListName(getChatColor() + player.getName() + ChatColor.RESET);
+        player.setCustomName(getChatColor() + player.getName() + ChatColor.RESET);
     }
 
     public void removePlayer(Player player) {
         players.remove(player);
         player.setDisplayName(ChatColor.RESET + player.getName() + ChatColor.RESET);
         player.setPlayerListName(ChatColor.RESET + player.getName() + ChatColor.RESET);
+        player.setCustomName(ChatColor.RESET + player.getName() + ChatColor.RESET);
     }
 
     public void tick() {
@@ -96,5 +101,16 @@ public class Team {
             return Objects.equals(team.color, color);
         }
         return false;
+    }
+
+    public List<Player> players() {
+        return players;
+    }
+
+    @EventHandler
+    private void onPlayerDeath(PlayerDeathEvent event) {
+        Player p = event.getEntity();
+        if (!players.contains(p)) return;
+        if (bed.isDestroyed()) players.remove(p);
     }
 }

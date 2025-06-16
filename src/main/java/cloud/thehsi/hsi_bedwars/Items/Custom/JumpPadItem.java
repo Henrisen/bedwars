@@ -26,7 +26,7 @@ import java.util.Random;
 public class JumpPadItem extends BaseItem implements Listener {
     List<JumpPad> pads = new ArrayList<>();
     public JumpPadItem(PluginItems.ItemProvider provider) {
-        super(provider, Material.SLIME_BLOCK, "jump_pad", "Pump Pad", false, meta -> {meta.setRarity(ItemRarity.RARE);return meta;});
+        super(provider, Material.SLIME_BLOCK, "jump_pad", "Pump Pad", false, false, meta -> {meta.setRarity(ItemRarity.RARE);return meta;});
     }
 
     static class JumpPad {
@@ -202,6 +202,6 @@ public class JumpPadItem extends BaseItem implements Listener {
     }
 
     @Override
-    public void inventoryTick(Player player, ItemStack stack) {}
+    public ItemStack inventoryTick(Player player, ItemStack stack) { return stack; }
 
 }

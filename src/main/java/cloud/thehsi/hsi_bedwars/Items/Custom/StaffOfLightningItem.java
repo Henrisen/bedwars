@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class StaffOfLightningItem extends BaseItem {
     public StaffOfLightningItem(PluginItems.ItemProvider provider) {
-        super(provider, Material.BLAZE_ROD, "staff_of_lightning", "Staff of Lightning", false, meta -> {meta.setRarity(ItemRarity.RARE);meta.setMaxStackSize(1);meta.setEnchantmentGlintOverride(true);return meta;});
+        super(provider, Material.BLAZE_ROD, "staff_of_lightning", "Staff of Lightning", false, false, meta -> {meta.setRarity(ItemRarity.RARE);meta.setMaxStackSize(1);meta.setEnchantmentGlintOverride(true);return meta;});
     }
 
     @Override
@@ -62,5 +62,5 @@ public class StaffOfLightningItem extends BaseItem {
     }
 
     @Override
-    public void inventoryTick(Player player, ItemStack stack) {}
+    public ItemStack inventoryTick(Player player, ItemStack stack) { return stack; }
 }

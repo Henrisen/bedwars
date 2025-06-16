@@ -17,13 +17,13 @@ import java.util.Random;
 public class TheChanceItem extends BaseItem implements Listener {
     Random random = new Random(System.currentTimeMillis());
     public TheChanceItem(PluginItems.ItemProvider provider) {
-        super(provider, Material.BRUSH, "the_chance", "The Chance", false, meta -> {meta.setRarity(ItemRarity.EPIC);return meta;});
+        super(provider, Material.BRUSH, "the_chance", "The Chance", false, false, meta -> {meta.setRarity(ItemRarity.EPIC);return meta;});
     }
 
     @Override
     public void onUse(PlayerInteractEvent event) {}
     @Override
-    public void inventoryTick(Player player, ItemStack stack) {}
+    public ItemStack inventoryTick(Player player, ItemStack stack) { return stack; }
 
     @EventHandler
     public void onHitPlayer(EntityDamageByEntityEvent event) {

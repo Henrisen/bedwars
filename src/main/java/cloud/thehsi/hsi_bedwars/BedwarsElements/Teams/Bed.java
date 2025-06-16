@@ -65,7 +65,7 @@ public class Bed {
         return null;
     }
 
-    private Material getBedType() {
+    public Material getBedType() {
         return switch (team.getColor()) {
             case "red" -> Material.RED_BED;
             case "orange" -> Material.ORANGE_BED;

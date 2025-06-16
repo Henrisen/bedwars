@@ -12,6 +12,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -22,18 +24,21 @@ abstract public class BaseItem implements Listener {
     Plugin plugin;
     Function<ItemMeta, ItemMeta> modifications;
     Boolean doesTick;
+    Boolean doesTickEachItem;
     BuildTracker buildTracker;
-    public BaseItem(PluginItems.ItemProvider provider, Material type, String id, String name, Boolean doesTick, Function<ItemMeta, ItemMeta> modifications) {
+    public BaseItem(PluginItems.ItemProvider provider, Material type, String id, String name, Boolean doesTick, Boolean doesTickEachItem, Function<ItemMeta, ItemMeta> modifications) {
         this.itemType = type;
         this.itemId = id;
         this.itemName = name;
         this.plugin = provider.plugin();
         this.doesTick = doesTick;
+        this.doesTickEachItem = doesTickEachItem;
         this.modifications = modifications;
         this.buildTracker = provider.buildTracker();
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
+    @SuppressWarnings("unused")
     public static ItemMeta NONE(ItemMeta meta) {
         return meta;
     }
@@ -57,6 +62,22 @@ abstract public class BaseItem implements Listener {
         return stack;
     }
 
+    public ItemStack getDefaultStack(Player player) {
+        ItemStack stack = new ItemStack(itemType, 1);
+        ItemMeta meta = stack.getItemMeta();
+        assert meta != null;
+        meta.getPersistentDataContainer().set(
+                new NamespacedKey(plugin, "item_id"),
+                PersistentDataType.STRING,
+                itemId
+        );
+        meta.setItemName(itemName);
+        meta = modifications.apply(meta);
+        stack.setItemMeta(meta);
+        inventoryTick(player, stack);
+        return stack;
+    }
+
     public Plugin plugin() {
         return plugin;
     }
@@ -74,7 +95,7 @@ abstract public class BaseItem implements Listener {
     }
 
     abstract public void onUse(PlayerInteractEvent event);
-    abstract public void inventoryTick(Player player, ItemStack stack);
+    abstract public ItemStack inventoryTick(Player player, ItemStack stack);
 
     public ItemStack getInInventory(Player player) {
         for (ItemStack stack : player.getInventory()) {
@@ -82,6 +103,15 @@ abstract public class BaseItem implements Listener {
             if (isThisItem(stack)) return stack;
         }
         return null;
+    }
+
+    public List<ItemStack> getAllInInventory(Player player) {
+        List<ItemStack> stacks = new ArrayList<>();
+        for (ItemStack stack : player.getInventory()) {
+            if (stack == null) continue;
+            if (isThisItem(stack)) stacks.add(stack);
+        }
+        return stacks;
     }
 
     public int countInInventory(Player player) {
@@ -96,8 +126,10 @@ abstract public class BaseItem implements Listener {
     public void tick() {
         if (!doesTick) return;
         for (Player p : Bukkit.getOnlinePlayers()) {
-            ItemStack stack = getInInventory(p);
-            if (stack != null) inventoryTick(p, stack);
+            for (ItemStack stack : getAllInInventory(p)) {
+                if (stack != null) inventoryTick(p, stack);
+                if (!doesTickEachItem) break;
+            }
         }
     }
 }

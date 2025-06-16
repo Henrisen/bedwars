@@ -15,6 +15,7 @@ public class PluginItems {
     Plugin plugin;
     BuildTracker buildTracker;
 
+    @SuppressWarnings("unused")
     public PluginItems(Plugin plugin, BuildTracker buildTracker) {
         this.plugin = plugin;
         this.buildTracker = buildTracker;
@@ -27,6 +28,7 @@ public class PluginItems {
         BaseItem JUMP_PAD = registerItem(JumpPadItem::new);
         BaseItem THE_CHANCE = registerItem(TheChanceItem::new);
         BaseItem WOOL = registerItem(WoolItem::new);
+        BaseItem BED = registerItem(BedItem::new);
 
         Bukkit.getScheduler().runTaskTimer(plugin, () -> items.forEach(BaseItem::tick), 0, 1);
     }

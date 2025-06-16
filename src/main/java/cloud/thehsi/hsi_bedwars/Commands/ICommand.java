@@ -39,7 +39,7 @@ public class ICommand extends AdvancedCommand {
                     commandSender.sendMessage(Main.makeDisplay() + ChatColor.RED + "Unknown Item: " + strings[0]);
                     return false;
                 }
-                stack = givenItem.getDefaultStack();
+                stack = givenItem.getDefaultStack((Player)commandSender);
                 int amount;
                 try {
                     amount = Integer.parseInt(strings[1]);

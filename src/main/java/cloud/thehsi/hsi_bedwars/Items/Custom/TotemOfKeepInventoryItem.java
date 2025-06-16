@@ -16,13 +16,13 @@ import org.bukkit.inventory.ItemStack;
 
 public class TotemOfKeepInventoryItem extends BaseItem {
     public TotemOfKeepInventoryItem(PluginItems.ItemProvider provider) {
-        super(provider, Material.TOTEM_OF_UNDYING, "totem_of_keep_inventory", "Totem of Keep Inventory", false, meta -> {meta.setRarity(ItemRarity.RARE);return meta;});
+        super(provider, Material.TOTEM_OF_UNDYING, "totem_of_keep_inventory", "Totem of Keep Inventory", false, false, meta -> {meta.setRarity(ItemRarity.RARE);return meta;});
     }
 
     @Override
     public void onUse(PlayerInteractEvent event) {}
     @Override
-    public void inventoryTick(Player player, ItemStack stack) {}
+    public ItemStack inventoryTick(Player player, ItemStack stack) { return stack; }
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onDeath(EntityResurrectEvent event) {
