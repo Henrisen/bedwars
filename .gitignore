@@ -1,2 +1,4 @@
-# exclude everything in target
+# exclude everything in target and .idea
 target/*
+.idea/*
+.idea/workspace.xml
