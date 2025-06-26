@@ -2,6 +2,7 @@ package cloud.thehsi.hsi_bedwars.Items;
 
 import cloud.thehsi.hsi_bedwars.BuildTracker;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -26,7 +27,9 @@ abstract public class BaseItem implements Listener {
     Boolean doesTick;
     Boolean doesTickEachItem;
     BuildTracker buildTracker;
-    public BaseItem(PluginItems.ItemProvider provider, Material type, String id, String name, Boolean doesTick, Boolean doesTickEachItem, Function<ItemMeta, ItemMeta> modifications) {
+    String description;
+
+    public BaseItem(PluginItems.ItemProvider provider, Material type, String id, String name, Boolean doesTick, Boolean doesTickEachItem, String description, Function<ItemMeta, ItemMeta> modifications) {
         this.itemType = type;
         this.itemId = id;
         this.itemName = name;
@@ -35,6 +38,7 @@ abstract public class BaseItem implements Listener {
         this.doesTickEachItem = doesTickEachItem;
         this.modifications = modifications;
         this.buildTracker = provider.buildTracker();
+        this.description = description;
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
@@ -75,6 +79,43 @@ abstract public class BaseItem implements Listener {
         meta = modifications.apply(meta);
         stack.setItemMeta(meta);
         inventoryTick(player, stack);
+        return stack;
+    }
+
+    private int countInInventory(Player player, Material material) {
+        int i=0;
+        for (ItemStack stack : player.getInventory()) {
+            if (stack==null) continue;
+            if (stack.getType()!=material) continue;
+            i+=stack.getAmount();
+        }
+        return i;
+    }
+
+    public ItemStack getShopPreview(Player player, int cost, Material costMaterial, String materialName, Integer index) {
+        ItemStack stack = getDefaultStack(player);
+        ItemMeta meta = stack.getItemMeta();
+        assert meta != null;
+        List<String> lore = new ArrayList<>();
+        if (costMaterial == Material.AIR)
+            lore.add(ChatColor.GRAY + "Cost: " + ChatColor.WHITE + "FREE");
+        else
+            lore.add(ChatColor.GRAY + "Cost: " + ChatColor.WHITE + cost + " " + materialName);
+        lore.add("");
+        for (String line : description.split("\n"))
+            lore.add(ChatColor.GRAY + line);
+        lore.add("");
+        if (countInInventory(player, costMaterial) >= cost)
+            lore.add(ChatColor.YELLOW + "Click to purchase!");
+        else
+            lore.add(ChatColor.RED + "You don't have enough " + materialName);
+        meta.setLore(lore);
+        meta.getPersistentDataContainer().set(
+                new NamespacedKey(plugin, "store_id"),
+                PersistentDataType.INTEGER,
+                index
+        );
+        stack.setItemMeta(meta);
         return stack;
     }
 

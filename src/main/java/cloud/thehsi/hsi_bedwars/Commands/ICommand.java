@@ -1,7 +1,6 @@
 package cloud.thehsi.hsi_bedwars.Commands;
 
 import cloud.thehsi.hsi_bedwars.Items.BaseItem;
-import cloud.thehsi.hsi_bedwars.Items.PluginItems;
 import cloud.thehsi.hsi_bedwars.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -15,11 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static cloud.thehsi.hsi_bedwars.Main.pluginItems;
+
 public class ICommand extends AdvancedCommand {
-    PluginItems pluginItems;
-    public ICommand(Plugin plugin, PluginItems pluginItems) {
+    public ICommand(Plugin plugin) {
         super(plugin);
-        this.pluginItems = pluginItems;
     }
 
     @Override

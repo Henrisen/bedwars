@@ -20,7 +20,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class MineItem extends BaseItem implements Listener {
     public MineItem(PluginItems.ItemProvider provider) {
-        super(provider, Material.BLAZE_POWDER, "mine", "Mine", false, false, meta -> {meta.setRarity(ItemRarity.RARE);return meta;});
+        super(provider, Material.BLAZE_POWDER, "mine", "Mine", false, false, "A Disguised Mine\nPlace against block or Mine to\nDisguise Mine as that Block", meta -> {meta.setRarity(ItemRarity.RARE);return meta;});
     }
 
     private Player getPlayerOnBlock(Location location) {

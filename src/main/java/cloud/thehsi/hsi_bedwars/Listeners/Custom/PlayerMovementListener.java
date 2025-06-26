@@ -1,5 +1,6 @@
-package cloud.thehsi.hsi_bedwars.Listeners;
+package cloud.thehsi.hsi_bedwars.Listeners.Custom;
 
+import cloud.thehsi.hsi_bedwars.Listeners.AdvancedListener;
 import org.bukkit.damage.DamageSource;
 import org.bukkit.damage.DamageType;
 import org.bukkit.event.EventHandler;

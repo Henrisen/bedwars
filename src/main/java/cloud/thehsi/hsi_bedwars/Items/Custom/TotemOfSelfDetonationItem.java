@@ -15,7 +15,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class TotemOfSelfDetonationItem extends BaseItem {
     public TotemOfSelfDetonationItem(PluginItems.ItemProvider provider) {
-        super(provider, Material.TOTEM_OF_UNDYING, "totem_of_self_detonation", "Totem of Self Detonation", false, false, meta -> {meta.setRarity(ItemRarity.RARE);return meta;});
+        super(provider, Material.TOTEM_OF_UNDYING, "totem_of_self_detonation", "Totem of Self Detonation", false, false, "Explode after dying\n(Single Use)", meta -> {meta.setRarity(ItemRarity.RARE);return meta;});
     }
 
     @Override

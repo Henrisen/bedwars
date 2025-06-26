@@ -42,7 +42,7 @@ public class WoolItem extends BaseItem {
     private final Map<String, Material> woolLocations = new HashMap<>();
     private final Material[] wools = {Material.RED_WOOL, Material.ORANGE_WOOL, Material.YELLOW_WOOL, Material.LIME_WOOL, Material.LIGHT_BLUE_WOOL, Material.PURPLE_WOOL, Material.PINK_WOOL, Material.WHITE_WOOL};
     public WoolItem(PluginItems.ItemProvider provider) {
-        super(provider, Material.RED_WOOL, "wool", "Wool", true, true, meta -> {
+        super(provider, Material.RED_WOOL, "wool", "Wool", true, true, "Great for bridging across islands.\nTurns into you team's color.", meta -> {
             meta.setRarity(ItemRarity.COMMON);
             return meta;
         });

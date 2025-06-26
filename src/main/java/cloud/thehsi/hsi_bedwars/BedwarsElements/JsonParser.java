@@ -7,6 +7,7 @@ import cloud.thehsi.hsi_bedwars.BedwarsElements.Spawners.Custom.GoldSpawner;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Spawners.Custom.IronSpawner;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.Team;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.TeamController;
+import cloud.thehsi.hsi_bedwars.Items.BaseItem;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -14,10 +15,16 @@ import com.google.gson.JsonObject;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.plugin.Plugin;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+
+import static cloud.thehsi.hsi_bedwars.Main.pluginItems;
 
 public class JsonParser {
     static final Gson gson = new Gson();
@@ -36,7 +43,8 @@ public class JsonParser {
                 writer.write("""
                         {
                             "teams": {},
-                            "spawners": []
+                            "spawners": [],
+                            "trades": []
                         }""");
             } catch (IOException ex) {throw new RuntimeException(ex);}
             try {
@@ -82,6 +90,50 @@ public class JsonParser {
         }
     }
 
+    public static List<Trader.TradeableItem> getTrades() {
+        List<Trader.TradeableItem> tradeableItems = new ArrayList<>();
+        JsonArray trades = json.get("trades").getAsJsonArray();
+        for (JsonElement element : trades) {
+            JsonObject tradeData = element.getAsJsonObject();
+            String item = tradeData.get("id").getAsString();
+            Integer count = tradeData.get("count").getAsInt();
+            JsonArray cost = tradeData.get("cost").getAsJsonArray();
+            if (cost.size() != 2) {
+                Bukkit.broadcastMessage(ChatColor.RED + "Trade for Item '" + item + "' doesn't have Cost configured correctly. Skipping!");
+                continue;
+            }
+            String costMaterialName = cost.get(1).getAsString();
+            Material costMaterial = switch (costMaterialName) {
+                case "iron" -> Material.IRON_INGOT;
+                case "gold" -> Material.GOLD_INGOT;
+                case "diamond" -> Material.DIAMOND;
+                case "emerald" -> Material.EMERALD;
+                case "none" -> Material.AIR;
+                default -> null;
+            };
+            if (costMaterial == null) {
+                Bukkit.broadcastMessage(ChatColor.RED + "Unknown Cost Material Type: '" + costMaterialName + "' Skipping!");
+                continue;
+            }
+            Integer costAmount = cost.get(0).getAsInt();
+            BaseItem givenItem = null;
+            for (BaseItem proposedItem : pluginItems.getItems()) {
+                if (Objects.equals(item, proposedItem.getId())) {
+                    givenItem = proposedItem;
+                    break;
+                }
+            }
+            if (givenItem == null) {
+                Bukkit.broadcastMessage(ChatColor.RED + "Unknown Item: '" + item + "' Skipping!");
+                continue;
+            }
+            String costMaterialNameFormatted = costMaterialName.substring(0,1).toUpperCase() + costMaterialName.substring(1);
+            Trader.TradeableItem tradeableItem = new Trader.TradeableItem(givenItem, count, costAmount, costMaterial, costMaterialNameFormatted);
+            tradeableItems.add(tradeableItem);
+        }
+        return tradeableItems;
+    }
+
     public static Location getCenter() {
         return locationFromJsonArray(json.get("center").getAsJsonArray());
     }
@@ -94,18 +146,20 @@ public class JsonParser {
             JsonObject teamData = element.getAsJsonObject();
 
             Location spawnpoint = locationFromJsonArray(teamData.get("spawnpoint").getAsJsonArray());
+            Location trader_location = locationFromJsonArray(teamData.get("trader").getAsJsonArray());
             JsonObject bedArray = teamData.get("bed").getAsJsonObject();
             Location bed1 = locationFromJsonArray(bedArray.get("1").getAsJsonArray());
             Location bed2 = locationFromJsonArray(bedArray.get("2").getAsJsonArray());
-            Team team = new Team(color, bed1, bed2, spawnpoint, plugin);
+            Team team = new Team(color, bed1, bed2, spawnpoint, trader_location, plugin);
             TeamController.addTeam(team);
         }
     }
 
     public static void addTeam(Team team) {
         JsonObject team_data = new JsonObject();
-        JsonObject teams = json.get("teams").getAsJsonObject();
+        JsonObject teams = json.getAsJsonObject("teams");
         JsonArray spawnpoint = jsonArrayFromLocation(team.getSpawnpoint().getSpawnpointLocation());
+        JsonArray trader = jsonArrayFromLocation(team.getTrader().getSpawnLocation());
         JsonObject bed = new JsonObject();
         JsonArray bed1 = jsonArrayFromLocation(team.getBed().getBedLocation(false));
         JsonArray bed2 = jsonArrayFromLocation(team.getBed().getBedLocation(true));
@@ -113,9 +167,12 @@ public class JsonParser {
         bed.add("2", bed2);
         team_data.add("bed", bed);
         team_data.add("spawnpoint", spawnpoint);
+        team_data.add("trader", trader);
         teams.add(team.getColor(), team_data);
+        json.add("teams", teams);
         updateFile();
     }
+
 
     public static void setCenter(Location location) {
         json.add("center", jsonArrayFromLocation(location));

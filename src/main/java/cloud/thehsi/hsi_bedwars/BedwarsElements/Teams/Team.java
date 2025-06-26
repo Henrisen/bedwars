@@ -1,5 +1,7 @@
 package cloud.thehsi.hsi_bedwars.BedwarsElements.Teams;
 
+import cloud.thehsi.hsi_bedwars.BedwarsElements.Trader;
+import cloud.thehsi.hsi_bedwars.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -18,10 +20,11 @@ public class Team implements Listener {
     String color;
     ChatColor chatColor;
     Spawnpoint spawnpoint;
+    Trader trader;
     Bed bed;
     List<Player> players;
 
-    public Team(String color, Location bed1, Location bed2, Location spawnpoint, Plugin plugin) {
+    public Team(String color, Location bed1, Location bed2, Location spawnpoint, Location trader_location, Plugin plugin) {
         players = new ArrayList<>();
         chatColor = switch (color) {
             case "red" -> ChatColor.RED;
@@ -38,6 +41,7 @@ public class Team implements Listener {
             Bukkit.broadcastMessage(ChatColor.RED + "Unknown Team Color: '" + color + "'");
             return;
         }
+        this.trader = new Trader(trader_location, this, Main.pluginItems, plugin);
         this.color = color;
         this.spawnpoint = new Spawnpoint(spawnpoint, this, plugin);
         this.bed = new Bed(bed1, bed2, this);
@@ -63,6 +67,9 @@ public class Team implements Listener {
 
     public Spawnpoint getSpawnpoint() {
         return spawnpoint;
+    }
+    public Trader getTrader() {
+        return trader;
     }
 
     public Bed getBed() {
@@ -91,7 +98,7 @@ public class Team implements Listener {
     }
 
     public void tick() {
-        players.removeIf(player->!player.isOnline());
+        players.removeIf(player->!player.isOnline()&&bed.isDestroyed());
     }
 
     public ChatColor getChatColor() {

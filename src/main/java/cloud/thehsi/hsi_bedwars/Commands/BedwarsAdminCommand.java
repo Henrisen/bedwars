@@ -38,7 +38,7 @@ public class BedwarsAdminCommand extends AdvancedCommand {
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, String[] strings) {
         if (strings.length != 5) {
-            commandSender.sendMessage(ChatColor.RED + "/bedwars_admin <add_bed|add_spawner|add_spawnpoint> <x> <y> <z>");
+            commandSender.sendMessage(ChatColor.RED + "/bedwars_admin <add_bed|add_spawner|add_spawnpoint|add_trader> <color|material|world> <x> <y> <z>");
             return false;
         }
         String x = strings[2];
@@ -46,7 +46,7 @@ public class BedwarsAdminCommand extends AdvancedCommand {
         String z = strings[4];
         Location location;
         try {
-            location = new Location(((Player)commandSender).getWorld(), Integer.parseInt(x), Integer.parseInt(y), Integer.parseInt(z));
+            location = new Location(((Player)commandSender).getWorld(), Float.parseFloat(x), Float.parseFloat(y), Float.parseFloat(z));
         }catch (NumberFormatException err) {
             commandSender.sendMessage(ChatColor.RED + err.getMessage());
             return false;
@@ -106,8 +106,8 @@ public class BedwarsAdminCommand extends AdvancedCommand {
                 if (team == null) {
                     commandSender.sendMessage(ChatColor.YELLOW + "[WARNING] There was no " + strings[1] + " team.");
                     commandSender.sendMessage(ChatColor.YELLOW + "[WARNING] It was automatically created.");
-                    commandSender.sendMessage(ChatColor.YELLOW + "[WARNING] You may want to set a Spawnpoint.");
-                    team = new Team(strings[1], bed1, bed2, new Location(bed1.getWorld(), 0,0,0), plugin);
+                    commandSender.sendMessage(ChatColor.YELLOW + "[WARNING] You may want to set a Spawnpoint and Trader.");
+                    team = new Team(strings[1], bed1, bed2, new Location(bed1.getWorld(), 0,0,0), new Location(location.getWorld(), 0,1,0), plugin);
                     TeamController.addAndRegisterTeam(team);
                 }else {
                     team.getBed().getBedLocation(false).getBlock().setType(Material.AIR, false);
@@ -123,12 +123,13 @@ public class BedwarsAdminCommand extends AdvancedCommand {
                 if (team == null) {
                     commandSender.sendMessage(ChatColor.YELLOW + "[WARNING] There was no " + strings[1] + " team.");
                     commandSender.sendMessage(ChatColor.YELLOW + "[WARNING] It was automatically created.");
-                    commandSender.sendMessage(ChatColor.YELLOW + "[WARNING] You may want to set a Bed.");
+                    commandSender.sendMessage(ChatColor.YELLOW + "[WARNING] You may want to set a Bed and Trader.");
                     team = new Team(
                             strings[1],
                             new Location(location.getWorld(),0,0,0),
                             new Location(location.getWorld(), 1,0,0),
                             location,
+                            new Location(location.getWorld(), 0,1,0),
                             plugin
                     );
                     TeamController.addAndRegisterTeam(team);
@@ -137,6 +138,27 @@ public class BedwarsAdminCommand extends AdvancedCommand {
                     TeamController.updateTeam(team);
                 }
                 commandSender.sendMessage(Main.makeDisplay() + "Set Spawnpoint for Team " + strings[1]);
+                break;
+            case "add_trader":
+                team = TeamController.getTeamByColor(strings[1].toLowerCase());
+                if (team == null) {
+                    commandSender.sendMessage(ChatColor.YELLOW + "[WARNING] There was no " + strings[1] + " team.");
+                    commandSender.sendMessage(ChatColor.YELLOW + "[WARNING] It was automatically created.");
+                    commandSender.sendMessage(ChatColor.YELLOW + "[WARNING] You may want to set a Bed and Spawnpoint.");
+                    team = new Team(
+                            strings[1],
+                            new Location(location.getWorld(),0,0,0),
+                            new Location(location.getWorld(), 1,0,0),
+                            new Location(location.getWorld(), 0,1,0),
+                            location,
+                            plugin
+                    );
+                    TeamController.addAndRegisterTeam(team);
+                }else {
+                    team.getTrader().setSpawnLocation(location);
+                    TeamController.updateTeam(team);
+                }
+                commandSender.sendMessage(Main.makeDisplay() + "Set Trader for Team " + strings[1]);
                 break;
             case "set_center":
                 location.add(.5,.5,.5);
@@ -157,10 +179,11 @@ public class BedwarsAdminCommand extends AdvancedCommand {
                 suggestions.add("add_spawner");
                 suggestions.add("add_spawnpoint");
                 suggestions.add("set_center");
+                suggestions.add("set_trader");
                 break;
             case 2:
                 switch (strings[0]) {
-                    case "add_bed","add_spawnpoint":
+                    case "add_bed","add_spawnpoint","add_trader":
                         suggestions.addAll(List.of(colors));
                         break;
                     case "add_spawner":
@@ -176,7 +199,7 @@ public class BedwarsAdminCommand extends AdvancedCommand {
                 break;
             case 3,4,5:
                 switch (strings[0]) {
-                    case "add_spawnpoint","add_spawner","add_bed","set_center":
+                    case "add_spawnpoint","add_spawner","add_bed","set_center","add_trader":
                         Player p = (Player)commandSender;
                         RayTraceResult result = p.rayTraceBlocks(5);
                         if (strings.length == 3) {

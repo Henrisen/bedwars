@@ -6,17 +6,14 @@ import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.TeamController;
 import cloud.thehsi.hsi_bedwars.Commands.PluginCommands;
 import cloud.thehsi.hsi_bedwars.Items.PluginItems;
 import cloud.thehsi.hsi_bedwars.Listeners.PluginListeners;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.GameRule;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
     BuildTracker tracker = new BuildTracker();
-    public PluginItems pluginItems;
+    public static PluginItems pluginItems;
     @Override
     public void onEnable() {
         for (Entity entity : Bukkit.getWorlds().getFirst().getEntities()) {

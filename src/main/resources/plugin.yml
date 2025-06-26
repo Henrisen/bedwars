@@ -20,3 +20,5 @@ commands:
     permission: bedwars.admin
   i:
     permission: bedwars.admin
+  game_reset:
+    permission: bedwars.admin

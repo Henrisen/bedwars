@@ -2,6 +2,7 @@ package cloud.thehsi.hsi_bedwars.Listeners;
 
 import cloud.thehsi.hsi_bedwars.BuildTracker;
 import cloud.thehsi.hsi_bedwars.Items.PluginItems;
+import cloud.thehsi.hsi_bedwars.Listeners.Custom.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
@@ -16,17 +17,14 @@ public class PluginListeners {
 
     private void register() {
         registerListener(plugin -> new BuildTrackerListener(plugin, tracker));
-        registerListener(plugin -> new FireballListener(plugin, tracker));
         registerListener(plugin -> new ExplosionListener(plugin, tracker));
-        registerListener(TntPlaceListener::new);
-        registerListener(SnowballHitPlayerListener::new);
         registerListener(AntiCropTramplingListener::new);
         registerListener(plugin -> new AntiDirtPathDestructionListener(plugin, tracker));
         registerListener(CustomMessageListener::new);
         registerListener(PlayerMovementListener::new);
         registerListener(MovementSpeedFixListener::new);
-        registerListener(plugin -> new PlayerItemUseListener(plugin, pluginItems));
         registerListener(AntiBedClickListener::new);
+        registerListener(AntiCraftListener::new);
     }
 
     private void registerListener(Function<Plugin, ? extends AdvancedListener> eventListener) {

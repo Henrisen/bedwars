@@ -1,5 +1,6 @@
-package cloud.thehsi.hsi_bedwars.Listeners;
+package cloud.thehsi.hsi_bedwars.Listeners.Custom;
 
+import cloud.thehsi.hsi_bedwars.Listeners.AdvancedListener;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,9 +9,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-import java.util.List;
-
-public class MovementSpeedFixListener extends AdvancedListener{
+public class MovementSpeedFixListener extends AdvancedListener {
     private final double maxSpeed = 10.0;
     public MovementSpeedFixListener(Plugin plugin) {
         super(plugin);

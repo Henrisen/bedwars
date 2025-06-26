@@ -22,7 +22,7 @@ import org.bukkit.util.Vector;
 
 public class BridgeEggItem extends BaseItem {
     public BridgeEggItem(PluginItems.ItemProvider provider) {
-        super(provider, Material.BLUE_EGG, "bridge_egg", "Bridge Egg", false, false, meta -> {meta.setRarity(ItemRarity.UNCOMMON);return meta;});
+        super(provider, Material.BLUE_EGG, "bridge_egg", "Bridge Egg", false, false, "An Egg that creates a Bridge\nwhere ever it gets thrown.", meta -> {meta.setRarity(ItemRarity.UNCOMMON);return meta;});
     }
 
     @EventHandler

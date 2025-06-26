@@ -16,7 +16,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class TotemOfKeepInventoryItem extends BaseItem {
     public TotemOfKeepInventoryItem(PluginItems.ItemProvider provider) {
-        super(provider, Material.TOTEM_OF_UNDYING, "totem_of_keep_inventory", "Totem of Keep Inventory", false, false, meta -> {meta.setRarity(ItemRarity.RARE);return meta;});
+        super(provider, Material.TOTEM_OF_UNDYING, "totem_of_keep_inventory", "Totem of Keep Inventory", false, false, "Allows you to keep your inventory\non Death (Single Use)", meta -> {meta.setRarity(ItemRarity.RARE);return meta;});
     }
 
     @Override

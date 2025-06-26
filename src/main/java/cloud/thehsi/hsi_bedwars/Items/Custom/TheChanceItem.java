@@ -17,7 +17,7 @@ import java.util.Random;
 public class TheChanceItem extends BaseItem implements Listener {
     Random random = new Random(System.currentTimeMillis());
     public TheChanceItem(PluginItems.ItemProvider provider) {
-        super(provider, Material.BRUSH, "the_chance", "The Chance", false, false, meta -> {meta.setRarity(ItemRarity.EPIC);return meta;});
+        super(provider, Material.BRUSH, "the_chance", "The Chance", false, false, "Hit Someone,\n50% You Die\n50% They Die", meta -> {meta.setRarity(ItemRarity.EPIC);return meta;});
     }
 
     @Override

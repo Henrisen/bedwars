@@ -4,6 +4,7 @@ import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.Bed;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.Team;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.TeamController;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Utils;
+import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Ageable;
@@ -108,7 +109,8 @@ public class BuildTracker {
                 Utils.broadcastBedDestruct(team, event.getPlayer());
                 event.setDropItems(false);
                 return true;
-            }
+            } else if (team != null && team.equals(playerTeam))
+                event.getPlayer().sendMessage(ChatColor.RED + "You can't destroy your own bed!");
         }
         CoordinateEntry coordinate = new CoordinateEntry(block.getX(), block.getY(), block.getZ(), CoordinateEntry.getNextEntryId(changes), block.getWorld(), false);
         return this.changes.containsKey(coordinate) || paused;

@@ -1,36 +1,66 @@
 package cloud.thehsi.hsi_bedwars.Items;
 
+import cloud.thehsi.hsi_bedwars.BedwarsElements.Utils;
 import cloud.thehsi.hsi_bedwars.BuildTracker;
 import cloud.thehsi.hsi_bedwars.Items.Custom.*;
 import org.bukkit.Bukkit;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-public class PluginItems {
+public class PluginItems implements Listener {
     public List<BaseItem> items = new ArrayList<>();
     Plugin plugin;
     BuildTracker buildTracker;
+    BukkitTask task;
 
-    @SuppressWarnings("unused")
+    public BaseItem TOTEM_OF_SELF_DETONATION,
+            MINE,
+            STAFF_OF_LIGHTNING,
+            BRIDGE_EGG,
+            TOTEM_OF_KEEP_INVENTORY,
+            JUMP_PAD,
+            THE_CHANCE,
+            WOOL,
+            BED,
+            FIREBALL,
+            TNT,
+            SNOWBALL;
+
     public PluginItems(Plugin plugin, BuildTracker buildTracker) {
         this.plugin = plugin;
         this.buildTracker = buildTracker;
 
-        BaseItem TOTEM_OF_SELF_DETONATION = registerItem(TotemOfSelfDetonationItem::new);
-        BaseItem MINE = registerItem(MineItem::new);
-        BaseItem STAFF_OF_LIGHTNING = registerItem(StaffOfLightningItem::new);
-        BaseItem BRIDGE_EGG = registerItem(BridgeEggItem::new);
-        BaseItem TOTEM_OF_KEEP_INVENTORY = registerItem(TotemOfKeepInventoryItem::new);
-        BaseItem JUMP_PAD = registerItem(JumpPadItem::new);
-        BaseItem THE_CHANCE = registerItem(TheChanceItem::new);
-        BaseItem WOOL = registerItem(WoolItem::new);
-        BaseItem BED = registerItem(BedItem::new);
+        TOTEM_OF_SELF_DETONATION = registerItem(TotemOfSelfDetonationItem::new);
+        MINE = registerItem(MineItem::new);
+        STAFF_OF_LIGHTNING = registerItem(StaffOfLightningItem::new);
+        BRIDGE_EGG = registerItem(BridgeEggItem::new);
+        TOTEM_OF_KEEP_INVENTORY = registerItem(TotemOfKeepInventoryItem::new);
+        JUMP_PAD = registerItem(JumpPadItem::new);
+        THE_CHANCE = registerItem(TheChanceItem::new);
+        WOOL = registerItem(WoolItem::new);
+        BED = registerItem(BedItem::new);
+        FIREBALL = registerItem(FireballItem::new);
+        TNT = registerItem(TNTItem::new);
+        SNOWBALL = registerItem(SnowballItem::new);
 
-        Bukkit.getScheduler().runTaskTimer(plugin, () -> items.forEach(BaseItem::tick), 0, 1);
+        task = Bukkit.getScheduler().runTaskTimer(plugin, () -> items.forEach(BaseItem::tick), 1, 1);
+        Bukkit.getPluginManager().registerEvents(this, plugin);
+    }
+
+    public void remove() {
+        task.cancel();
+        for (BaseItem item : items) {
+            Utils.unregisterEvents(item);
+        }
+        items.clear();
     }
 
     private BaseItem registerItem(Function<ItemProvider, BaseItem> factory) {
@@ -66,5 +96,11 @@ public class PluginItems {
         public BuildTracker buildTracker() {
             return buildTracker;
         }
+    }
+
+    @EventHandler
+    private void onUse(PlayerInteractEvent event) {
+        BaseItem item = getItem(event.getItem());
+        if (item != null) item.onUse(event);
     }
 }

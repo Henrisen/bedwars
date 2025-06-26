@@ -23,7 +23,8 @@ public class PluginCommands {
         registerCommand("bedwars_admin", plugin -> new BedwarsAdminCommand(plugin, tracker));
         registerCommand("join", JoinCommand::new);
         registerCommand("revive", ReviveCommand::new);
-        registerCommand("i", plugin -> new ICommand(plugin, pluginItems));
+        registerCommand("i", ICommand::new);
+        registerCommand("game_reset", plugin -> new GameResetCommand(plugin, tracker));
     }
 
     private void registerCommand(String command, Function<Plugin, ? extends AdvancedCommand> commandExecutor) {

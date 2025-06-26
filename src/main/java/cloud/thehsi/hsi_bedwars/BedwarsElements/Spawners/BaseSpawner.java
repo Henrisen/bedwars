@@ -34,6 +34,7 @@ public abstract class BaseSpawner {
         World world = location.getWorld();
         assert world != null;
         if (!world.isChunkLoaded(location.getChunk())) return;
+        if (world.getPlayers().isEmpty()) return;
         Item item = world.dropItem(location, stack);
         item.setVelocity(item.getVelocity().multiply(.25));
     }
@@ -42,11 +43,12 @@ public abstract class BaseSpawner {
         World world = location.getWorld();
         if (world==null) return Integer.MAX_VALUE;
         if (!world.isChunkLoaded(location.getChunk())) return Integer.MAX_VALUE;
+        if (world.getPlayers().isEmpty()) return Integer.MAX_VALUE;
         int count = 0;
         for (Entity entity : world.getEntities())
         {
             if (entity instanceof Item _item)
-                if (_item.getLocation().distance(location) < 2 && _item.getItemStack().getType() == type)
+                if (_item.getLocation().distance(location) < 4 && _item.getItemStack().getType() == type)
                     count += _item.getItemStack().getAmount();
         }
         return count;

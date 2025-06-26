@@ -21,7 +21,7 @@ import java.util.Objects;
 
 public class BedItem extends BaseItem {
     public BedItem(PluginItems.ItemProvider provider) {
-        super(provider, Material.RED_BED, "bed", "Replacement Bed", true, true, meta -> {
+        super(provider, Material.RED_BED, "bed", "Replacement Bed", true, true, "An Extra Bed\nAutomatic", meta -> {
             meta.setRarity(ItemRarity.EPIC);
             return meta;
         });

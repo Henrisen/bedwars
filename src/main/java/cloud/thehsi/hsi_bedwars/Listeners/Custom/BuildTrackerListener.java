@@ -1,7 +1,9 @@
-package cloud.thehsi.hsi_bedwars.Listeners;
+package cloud.thehsi.hsi_bedwars.Listeners.Custom;
 
 import cloud.thehsi.hsi_bedwars.BuildTracker;
+import cloud.thehsi.hsi_bedwars.Listeners.AdvancedListener;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -16,7 +18,7 @@ public class BuildTrackerListener extends AdvancedListener {
         tracker.registerChange(event.getBlockPlaced(), event.getBlockReplacedState().getBlockData(), false);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     private void onBlockBreak(BlockBreakEvent event) {
         event.setCancelled(!tracker.canBreakWithEvent(event.getBlock(), event));
     }

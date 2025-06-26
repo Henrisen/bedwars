@@ -5,6 +5,7 @@ import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
+import static cloud.thehsi.hsi_bedwars.Listeners.Custom.CustomMessageListener.respawnOnJoin;
 import static java.lang.Math.atan2;
 import static java.lang.Math.toDegrees;
 
@@ -63,12 +64,20 @@ public class Spawnpoint {
         for (int i = 5; i > 0; i--) {
             int finalI = i;
             Bukkit.getScheduler().runTaskLater(plugin, () -> {
+                if (!player.isOnline()) {
+                    respawnOnJoin.add(player);
+                    return;
+                }
                 player.sendTitle(ChatColor.RED + (team.bed.isDestroyed()?"BED DESTROYED!":"YOU DIED!"), ChatColor.YELLOW  + "You will respawn in " +  ChatColor.RED + finalI + ChatColor.YELLOW + " seconds!" , 0 ,21 ,0);
                 player.sendMessage(ChatColor.YELLOW  + "You will respawn in " +  ChatColor.RED + finalI + ChatColor.YELLOW + " seconds!");
             },(5 - i) * 20L);
         }
 
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            if (!player.isOnline()) {
+                respawnOnJoin.add(player);
+                return;
+            }
             player.teleport(location);
             player.setGameMode(GameMode.SURVIVAL);
             player.sendTitle(ChatColor.GREEN + "RESPAWNED!", "" , 0 ,20 ,20);
