@@ -22,7 +22,7 @@ public class SpawnerController {
     public static void remove() {
         for (BaseSpawner spawner : spawners) {
             spawner.remove();
-        };
+        }
         spawners.clear();
         task.cancel();
         time = 0;
