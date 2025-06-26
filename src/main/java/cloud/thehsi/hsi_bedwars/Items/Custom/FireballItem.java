@@ -1,51 +1,66 @@
-package cloud.thehsi.hsi_bedwars.Listeners;
+package cloud.thehsi.hsi_bedwars.Items.Custom;
 
-import cloud.thehsi.hsi_bedwars.BuildTracker;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Particle;
+import cloud.thehsi.hsi_bedwars.Items.BaseItem;
+import cloud.thehsi.hsi_bedwars.Items.PluginItems;
+import org.bukkit.*;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemRarity;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-public class FireballListener extends AdvancedListener {
-    BuildTracker tracker;
-    public FireballListener(Plugin plugin, BuildTracker tracker) {
-        super(plugin);
-        this.tracker = tracker;
+public class FireballItem extends BaseItem {
+    public FireballItem(PluginItems.ItemProvider provider) {
+        super(provider, Material.FIRE_CHARGE, "fireball", "Fireball", false, false, "Right click to Launch! Great to knock\nback enemies walking on thin bridges.", meta -> {
+            meta.setRarity(ItemRarity.RARE);
+            return meta;
+        });
     }
 
-    @EventHandler
-    private void fireballAndTntDamageReduction(EntityDamageEvent event) {
-        if (event.getCause() == EntityDamageEvent.DamageCause.BLOCK_EXPLOSION)
-            event.setDamage(10);
-        if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)
-            event.setDamage(5);
+    private Vector rotateAroundYAxisAndPitch(Vector vector, float yaw, float pitch) {
+        double yawAngle = Math.toRadians(yaw);
+        double pitchAngle = Math.toRadians(pitch);
 
-        if (event.getCause() == EntityDamageEvent.DamageCause.BLOCK_EXPLOSION || event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    if (!event.getEntity().isDead())
-                        event.getEntity().setVelocity(event.getEntity().getVelocity().multiply(1.75));
-                }
-            }.runTaskLater(plugin, 2);
-        }
+        // First, rotate around Y-axis (yaw)
+        double cosYaw = Math.cos(yawAngle);
+        double sinYaw = Math.sin(yawAngle);
+
+        double x = vector.getX() * cosYaw - vector.getZ() * sinYaw;
+        double z = vector.getX() * sinYaw + vector.getZ() * cosYaw;
+
+        // Then, apply pitch-based rotation
+        double cosPitch = Math.cos(pitchAngle);
+        double sinPitch = Math.sin(pitchAngle);
+
+        // Adjust the Y-offset based on pitch
+        double y = vector.getY() * cosPitch - vector.getZ() * sinPitch;
+
+        // Return the new vector
+        return new Vector(x, y, z);
     }
 
-    @EventHandler
-    private void fireballThrow(PlayerInteractEvent event) {
-        if (event.getItem() == null) return;
-        if (event.getItem().getType() != Material.FIRE_CHARGE) return;
+    private static Vector getOffset(int ticksLived, double radius, float fireballPitch) {
+        double angle = Math.PI / 10 * ticksLived;
+
+        // Calculate the offset to make the particle move in a circular pattern
+        double xOffset = radius * Math.cos(angle);
+        double zOffset = radius * Math.sin(angle);
+
+        // Calculate Y offset based on fireball's pitch
+        double yOffset = radius * Math.sin(Math.toRadians(fireballPitch)); // Use pitch for vertical offset
+
+        // Get the horizontal rotation of the particle based on fireball's yaw
+        return new Vector(xOffset, yOffset, zOffset);
+    }
+
+    @Override
+    public void onUse(PlayerInteractEvent event) {
         if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
-
         Player player = event.getPlayer();
         Location eyes = player.getEyeLocation();
 
@@ -63,6 +78,7 @@ public class FireballListener extends AdvancedListener {
 
         event.setCancelled(true);
         ItemStack stack = event.getItem();
+        assert stack != null;
         stack.setAmount(stack.getAmount()-1);
 
         new BukkitRunnable() {
@@ -103,46 +119,28 @@ public class FireballListener extends AdvancedListener {
                         );
                     }
                 } else {
-                    // Stop the task if the fireball is no longer alive
                     cancel();
                 }
             }
-
-            private static Vector getOffset(int ticksLived, double radius, float fireballPitch) {
-                double angle = Math.PI / 10 * ticksLived;
-
-                // Calculate the offset to make the particle move in a circular pattern
-                double xOffset = radius * Math.cos(angle);
-                double zOffset = radius * Math.sin(angle);
-
-                // Calculate Y offset based on fireball's pitch
-                double yOffset = radius * Math.sin(Math.toRadians(fireballPitch)); // Use pitch for vertical offset
-
-                // Get the horizontal rotation of the particle based on fireball's yaw
-                return new Vector(xOffset, yOffset, zOffset);
-            }
-        }.runTaskTimer(plugin, 0L, 1L); // Run every tick
+        }.runTaskTimer(plugin(), 0L, 1L); // Run every tick
     }
 
-    private Vector rotateAroundYAxisAndPitch(Vector vector, float yaw, float pitch) {
-        double yawAngle = Math.toRadians(yaw);
-        double pitchAngle = Math.toRadians(pitch);
+    @EventHandler
+    private void fireballDamageReduction(EntityDamageEvent event) {
+        if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)
+            event.setDamage(5);
 
-        // First, rotate around Y-axis (yaw)
-        double cosYaw = Math.cos(yawAngle);
-        double sinYaw = Math.sin(yawAngle);
-
-        double x = vector.getX() * cosYaw - vector.getZ() * sinYaw;
-        double z = vector.getX() * sinYaw + vector.getZ() * cosYaw;
-
-        // Then, apply pitch-based rotation
-        double cosPitch = Math.cos(pitchAngle);
-        double sinPitch = Math.sin(pitchAngle);
-
-        // Adjust the Y-offset based on pitch
-        double y = vector.getY() * cosPitch - vector.getZ() * sinPitch;
-
-        // Return the new vector
-        return new Vector(x, y, z);
+        if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if (!event.getEntity().isDead())
+                        event.getEntity().setVelocity(event.getEntity().getVelocity().multiply(1.75));
+                }
+            }.runTaskLater(plugin(), 2);
+        }
     }
+
+    @Override
+    public ItemStack inventoryTick(Player player, ItemStack stack) { return stack; }
 }

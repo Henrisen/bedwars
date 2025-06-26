@@ -22,7 +22,7 @@ import org.bukkit.util.Vector;
 
 public class BridgeEggItem extends BaseItem {
     public BridgeEggItem(PluginItems.ItemProvider provider) {
-        super(provider, Material.BLUE_EGG, "bridge_egg", "Bridge Egg", false, meta -> {meta.setRarity(ItemRarity.UNCOMMON);return meta;});
+        super(provider, Material.BLUE_EGG, "bridge_egg", "Bridge Egg", false, false, "An Egg that creates a Bridge\nwhere ever it gets thrown.", meta -> {meta.setRarity(ItemRarity.UNCOMMON);return meta;});
     }
 
     @EventHandler
@@ -59,7 +59,7 @@ public class BridgeEggItem extends BaseItem {
                     for (int z = -1; z <= 1; z++) {
                         Block b = block.getRelative(x, 0, z);
                         if (!b.getType().isAir()) continue;
-                        getBuildTracker().registerChange(b, b.getType(), false);
+                        getBuildTracker().registerChange(b, b.getBlockData(), false);
                         if (team == null)
                             b.setType(Material.RED_WOOL);
                         else
@@ -74,5 +74,5 @@ public class BridgeEggItem extends BaseItem {
     public void onUse(PlayerInteractEvent event) {}
 
     @Override
-    public void inventoryTick(Player player, ItemStack stack) {}
+    public ItemStack inventoryTick(Player player, ItemStack stack) { return stack; }
 }

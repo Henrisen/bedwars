@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37867ce5-3ed0-4dd4-851f-05a6f22df877" name="Changes" comment="- Added Totem of Keep Inventory&#10;- Fixed Respawn Bug: Player is not Correctly  Rotated on Spawn&#10;- When waiting for respawn, you now look towards your base by default.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
-    </list>
+    <list default="true" id="37867ce5-3ed0-4dd4-851f-05a6f22df877" name="Changes" comment="## Changes:&#10;- Refactored Code&#10;- Prevented Crafting of Items&#10;- Added Descriptions to Items&#10;- Added Shopkeeper&#10;- Added Item Preview for Shop&#10;- Added Shop System&#10;- Added Bulk Buy to Shop System&#10;- Added &quot;trader&quot; (Location) to Team in Config File&#10;- Added Trades (id, count, cost(amount, material) at Root in Config File&#10;- Added add_trader &lt;color&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt; to /bedwars_admin command&#10;- The Team Constructor now requires Trader location&#10;- The coordinates passwd into /bedwars_admin can now be Float&#10;- Added Message when breaking own Bed&#10;- BlockBreakListener Priority of the BuildTracker is now High (from Normal)&#10;- Added Custom Join and Leave messages.&#10;- Added an Introduction Message when joining.&#10;- System now remembers Players who canceled respawn by leaving and respawns them when they join&#10;- System now auto join People to tan old Team if exists before they left the server (excpet if new round started)&#10;- Added Fireball as an Item&#10;- Added a command (/game_reset) that resets the Game (same as /reload but faster)&#10;- Added &quot;trades&quot; in Root to default config&#10;- ConfigParser now loads Traders&#10;- Trader no longer Auto Spawns at Reds Base even if not Set Up.&#10;- Traders now have an GUI (right click)&#10;- Traders spawn facing away from the center&#10;- Moved PlayerItemUseListener.java into PluginItems.java&#10;- Moved all Listeners from Listeners to Listeners.Custom&#10;- Items and Spawners don't double there ticks/s every time /game_restart is run anymore&#10;- Moved SnowballHitPlayerListener.java into SnowballItem.java&#10;- Made the Snowball an Item&#10;- You're name color will  automatically be reset if you don't belong to any Team&#10;- You will only get removed from a Team if you disconnect and the bed is destroyed (from previous if you disconnect)&#10;- Added TNT as an Item&#10;- Moved TntPlaceListener.java into TNTItem.java&#10;- Added Trader.java&#10;- Added Utils::unregisterEvents for Unregistering a Listener&#10;&#10;## Bug Fixes:&#10;- Unable to break Bed due to incorrect Action check with no Sleep and no respawn Point Listener&#10;- Prevented Spawners from Crashing with too many items Servers by not being Loaded&#10;&#10;## Development News:&#10;Now using LeafMC (https://www.leafmc.one/) as a Server Software for Testing (this should not change anything with our compatibility with Spigot and others).&#10;We will most likely update to 1.21.6 in the next few releases" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +29,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -48,17 +45,18 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Maven.Compile and Override.executor": "Run",
     "Maven.hsi_bedwars [package].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "dev",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Henri/IdeaProjects/hsi_bedwars/src/main/java/cloud/thehsi/hsi_bedwars/BedwarsElements/Teams",
+    "last_opened_file_path": "C:/Windows/System32/cmd.exe",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font"
+    "settings.editor.selected.configurable": "preferences.externalTools"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -67,14 +65,14 @@
       <recent name="C:\Users\Henri\IdeaProjects\hsi_bedwars\src\main\java\cloud\thehsi\hsi_bedwars\BedwarsElements" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cloud.thehsi.hsi_bedwars.Listeners.Custom" />
       <recent name="cloud.thehsi.hsi_bedwars.Items.Custom" />
-      <recent name="cloud.thehsi.hsi_bedwars.Listeners" />
       <recent name="cloud.thehsi.hsi_bedwars.Commands" />
+      <recent name="cloud.thehsi.hsi_bedwars.Listeners" />
       <recent name="cloud.thehsi.hsi_bedwars.BedwarsElements.Spawners.Custom" />
-      <recent name="cloud.thehsi.hsi_bedwars.BedwarsElements.Spawners" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Maven.hsi_bedwars [package]">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="mcdev-temp-root" />
       <method v="2">
@@ -84,6 +82,36 @@
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <module name="mcdev-temp-root" />
       <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Compile and Override" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="package" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
       <method v="2" />
     </configuration>
     <configuration name="hsi_bedwars [package]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
@@ -116,6 +144,10 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Maven.hsi_bedwars [package]" />
+      <item itemvalue="Maven.Compile and Override" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -230,7 +262,47 @@
       <option name="project" value="LOCAL" />
       <updated>1743864654249</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="- CRITICAL BUGFIX:&#10;  Plugin Errors on Server Start (Not Reloads) due to loading before World.">
+      <option name="closed" value="true" />
+      <created>1743879258401</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1743879258401</updated>
+    </task>
+    <task id="LOCAL-00015" summary="- Added Items:&#10;  - Jump Pad&#10;  - The Chance&#10;  - Wool&#10;&#10;Fixed Build Tracker Bugs regarding blocks not being put back in the correct Block State&#10;&#10;Changed the Mine to make it easier to see">
+      <option name="closed" value="true" />
+      <created>1744753066221</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1744753066221</updated>
+    </task>
+    <task id="LOCAL-00016" summary="- Added Items:&#10;  - Replacement Bed (WIP)&#10;&#10;Changes:&#10;- Reworked Respawn Cooldown&#10;- Reworked Death Messages&#10;- Reworked Wool Item to Auto Adjust Color&#10;- Reworked Wool Item to Retain Data when Placed&#10;- Added Utility Class with Messaging Functions&#10;- Adjusted /i to tick once before giving item to player&#10;- Clear all Entities on Server Start&#10;- Added Tick all in Inventory Property to BaseItem (Ticks for All instead of only first Item)&#10;- Made BaseItem::inventoryTick return ItemStack instead of void&#10;- Added Bed Broken Alert&#10;- Added Auto Team Kick when death without Bed&#10;- Bed::getBedType is now public&#10;- Spawners now Check if Chunk is Loaded to Prevent spawning thousands of Items due to being unable to count in unloaded Chunks&#10;- Revamped Respawn Messages&#10;- Adopted Hypixel Messages&#10;&#10;+ Cleaned Code Up">
+      <option name="closed" value="true" />
+      <created>1750110679761</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1750110679761</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Changes:&#10;- Improved Respawn Text&#10;- Added Revive Command&#10;- Added Shuffle Mode to Join Command&#10;- Added TeamController::getRandomTeam&#10;- Added Sound on Respawn&#10;- Added Visual Indicator for Replacement Bed Usage&#10;&#10;Bug Fixes:&#10;- Team Player Death Listener not Registered&#10;- Removed POI Registration Error in Console&#10;- Removed Ability to Set Spawnpoint in Beds / Trigger Set Spawnpoint Message&#10;- When Joining a new Team, Team::addPlayer will auto kick you from your old Team">
+      <option name="closed" value="true" />
+      <created>1750117752237</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1750117752237</updated>
+    </task>
+    <task id="LOCAL-00018" summary="## Changes:&#10;- Refactored Code&#10;- Prevented Crafting of Items&#10;- Added Descriptions to Items&#10;- Added Shopkeeper&#10;- Added Item Preview for Shop&#10;- Added Shop System&#10;- Added Bulk Buy to Shop System&#10;- Added &quot;trader&quot; (Location) to Team in Config File&#10;- Added Trades (id, count, cost(amount, material) at Root in Config File&#10;- Added add_trader &lt;color&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt; to /bedwars_admin command&#10;- The Team Constructor now requires Trader location&#10;- The coordinates passwd into /bedwars_admin can now be Float&#10;- Added Message when breaking own Bed&#10;- BlockBreakListener Priority of the BuildTracker is now High (from Normal)&#10;- Added Custom Join and Leave messages.&#10;- Added an Introduction Message when joining.&#10;- System now remembers Players who canceled respawn by leaving and respawns them when they join&#10;- System now auto join People to tan old Team if exists before they left the server (excpet if new round started)&#10;- Added Fireball as an Item&#10;- Added a command (/game_reset) that resets the Game (same as /reload but faster)&#10;- Added &quot;trades&quot; in Root to default config&#10;- ConfigParser now loads Traders&#10;- Trader no longer Auto Spawns at Reds Base even if not Set Up.&#10;- Traders now have an GUI (right click)&#10;- Traders spawn facing away from the center&#10;- Moved PlayerItemUseListener.java into PluginItems.java&#10;- Moved all Listeners from Listeners to Listeners.Custom&#10;- Items and Spawners don't double there ticks/s every time /game_restart is run anymore&#10;- Moved SnowballHitPlayerListener.java into SnowballItem.java&#10;- Made the Snowball an Item&#10;- You're name color will  automatically be reset if you don't belong to any Team&#10;- You will only get removed from a Team if you disconnect and the bed is destroyed (from previous if you disconnect)&#10;- Added TNT as an Item&#10;- Moved TntPlaceListener.java into TNTItem.java&#10;- Added Trader.java&#10;- Added Utils::unregisterEvents for Unregistering a Listener&#10;&#10;## Bug Fixes:&#10;- Unable to break Bed due to incorrect Action check with no Sleep and no respawn Point Listener&#10;- Prevented Spawners from Crashing with too many items Servers by not being Loaded&#10;&#10;## Development News:&#10;Now using LeafMC (https://www.leafmc.one/) as a Server Software for Testing (this should not change anything with our compatibility with Spigot and others).&#10;We will most likely update to 1.21.6 in the next few releases">
+      <option name="closed" value="true" />
+      <created>1750960080683</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1750960080683</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -247,6 +319,12 @@
     <MESSAGE value="Added StaffOfLightning&#10;Bug Fixes for Mine" />
     <MESSAGE value="Rebalanced Mines&#10;Added Bridge Egg" />
     <MESSAGE value="- Added Totem of Keep Inventory&#10;- Fixed Respawn Bug: Player is not Correctly  Rotated on Spawn&#10;- When waiting for respawn, you now look towards your base by default." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added Totem of Keep Inventory&#10;- Fixed Respawn Bug: Player is not Correctly  Rotated on Spawn&#10;- When waiting for respawn, you now look towards your base by default." />
+    <MESSAGE value="- CRITICAL BUGFIX:&#10;  Plugin Errors on Server Start (Not Reloads) due to loading before World." />
+    <MESSAGE value="- Added Items:&#10;  - Jump Pad&#10;  - The Chance&#10;  - Wool&#10;&#10;Fixed Build Tracker Bugs regarding blocks not being put back in the correct Block State&#10;&#10;Changed the Mine to make it easier to see" />
+    <MESSAGE value="- Added Items:&#10;  - Replacement Bed (WIP)&#10;&#10;Changes:&#10;- Reworked Respawn Cooldown&#10;- Reworked Death Messages&#10;- Reworked Wool Item to Auto Adjust Color&#10;- Reworked Wool Item to Retain Data when Placed&#10;- Added Utility Class with Messaging Functions&#10;- Adjusted /i to tick once before giving item to player&#10;- Clear all Entities on Server Start&#10;- Added Tick all in Inventory Property to BaseItem (Ticks for All instead of only first Item)&#10;- Made BaseItem::inventoryTick return ItemStack instead of void&#10;- Added Bed Broken Alert&#10;- Added Auto Team Kick when death without Bed&#10;- Bed::getBedType is now public&#10;- Spawners now Check if Chunk is Loaded to Prevent spawning thousands of Items due to being unable to count in unloaded Chunks&#10;- Revamped Respawn Messages&#10;- Adopted Hypixel Messages" />
+    <MESSAGE value="- Added Items:&#10;  - Replacement Bed (WIP)&#10;&#10;Changes:&#10;- Reworked Respawn Cooldown&#10;- Reworked Death Messages&#10;- Reworked Wool Item to Auto Adjust Color&#10;- Reworked Wool Item to Retain Data when Placed&#10;- Added Utility Class with Messaging Functions&#10;- Adjusted /i to tick once before giving item to player&#10;- Clear all Entities on Server Start&#10;- Added Tick all in Inventory Property to BaseItem (Ticks for All instead of only first Item)&#10;- Made BaseItem::inventoryTick return ItemStack instead of void&#10;- Added Bed Broken Alert&#10;- Added Auto Team Kick when death without Bed&#10;- Bed::getBedType is now public&#10;- Spawners now Check if Chunk is Loaded to Prevent spawning thousands of Items due to being unable to count in unloaded Chunks&#10;- Revamped Respawn Messages&#10;- Adopted Hypixel Messages&#10;&#10;+ Cleaned Code Up" />
+    <MESSAGE value="Changes:&#10;- Improved Respawn Text&#10;- Added Revive Command&#10;- Added Shuffle Mode to Join Command&#10;- Added TeamController::getRandomTeam&#10;- Added Sound on Respawn&#10;- Added Visual Indicator for Replacement Bed Usage&#10;&#10;Bug Fixes:&#10;- Team Player Death Listener not Registered&#10;- Removed POI Registration Error in Console&#10;- Removed Ability to Set Spawnpoint in Beds / Trigger Set Spawnpoint Message&#10;- When Joining a new Team, Team::addPlayer will auto kick you from your old Team" />
+    <MESSAGE value="## Changes:&#10;- Refactored Code&#10;- Prevented Crafting of Items&#10;- Added Descriptions to Items&#10;- Added Shopkeeper&#10;- Added Item Preview for Shop&#10;- Added Shop System&#10;- Added Bulk Buy to Shop System&#10;- Added &quot;trader&quot; (Location) to Team in Config File&#10;- Added Trades (id, count, cost(amount, material) at Root in Config File&#10;- Added add_trader &lt;color&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt; to /bedwars_admin command&#10;- The Team Constructor now requires Trader location&#10;- The coordinates passwd into /bedwars_admin can now be Float&#10;- Added Message when breaking own Bed&#10;- BlockBreakListener Priority of the BuildTracker is now High (from Normal)&#10;- Added Custom Join and Leave messages.&#10;- Added an Introduction Message when joining.&#10;- System now remembers Players who canceled respawn by leaving and respawns them when they join&#10;- System now auto join People to tan old Team if exists before they left the server (excpet if new round started)&#10;- Added Fireball as an Item&#10;- Added a command (/game_reset) that resets the Game (same as /reload but faster)&#10;- Added &quot;trades&quot; in Root to default config&#10;- ConfigParser now loads Traders&#10;- Trader no longer Auto Spawns at Reds Base even if not Set Up.&#10;- Traders now have an GUI (right click)&#10;- Traders spawn facing away from the center&#10;- Moved PlayerItemUseListener.java into PluginItems.java&#10;- Moved all Listeners from Listeners to Listeners.Custom&#10;- Items and Spawners don't double there ticks/s every time /game_restart is run anymore&#10;- Moved SnowballHitPlayerListener.java into SnowballItem.java&#10;- Made the Snowball an Item&#10;- You're name color will  automatically be reset if you don't belong to any Team&#10;- You will only get removed from a Team if you disconnect and the bed is destroyed (from previous if you disconnect)&#10;- Added TNT as an Item&#10;- Moved TntPlaceListener.java into TNTItem.java&#10;- Added Trader.java&#10;- Added Utils::unregisterEvents for Unregistering a Listener&#10;&#10;## Bug Fixes:&#10;- Unable to break Bed due to incorrect Action check with no Sleep and no respawn Point Listener&#10;- Prevented Spawners from Crashing with too many items Servers by not being Loaded&#10;&#10;## Development News:&#10;Now using LeafMC (https://www.leafmc.one/) as a Server Software for Testing (this should not change anything with our compatibility with Spigot and others).&#10;We will most likely update to 1.21.6 in the next few releases" />
+    <option name="LAST_COMMIT_MESSAGE" value="## Changes:&#10;- Refactored Code&#10;- Prevented Crafting of Items&#10;- Added Descriptions to Items&#10;- Added Shopkeeper&#10;- Added Item Preview for Shop&#10;- Added Shop System&#10;- Added Bulk Buy to Shop System&#10;- Added &quot;trader&quot; (Location) to Team in Config File&#10;- Added Trades (id, count, cost(amount, material) at Root in Config File&#10;- Added add_trader &lt;color&gt; &lt;x&gt; &lt;y&gt; &lt;z&gt; to /bedwars_admin command&#10;- The Team Constructor now requires Trader location&#10;- The coordinates passwd into /bedwars_admin can now be Float&#10;- Added Message when breaking own Bed&#10;- BlockBreakListener Priority of the BuildTracker is now High (from Normal)&#10;- Added Custom Join and Leave messages.&#10;- Added an Introduction Message when joining.&#10;- System now remembers Players who canceled respawn by leaving and respawns them when they join&#10;- System now auto join People to tan old Team if exists before they left the server (excpet if new round started)&#10;- Added Fireball as an Item&#10;- Added a command (/game_reset) that resets the Game (same as /reload but faster)&#10;- Added &quot;trades&quot; in Root to default config&#10;- ConfigParser now loads Traders&#10;- Trader no longer Auto Spawns at Reds Base even if not Set Up.&#10;- Traders now have an GUI (right click)&#10;- Traders spawn facing away from the center&#10;- Moved PlayerItemUseListener.java into PluginItems.java&#10;- Moved all Listeners from Listeners to Listeners.Custom&#10;- Items and Spawners don't double there ticks/s every time /game_restart is run anymore&#10;- Moved SnowballHitPlayerListener.java into SnowballItem.java&#10;- Made the Snowball an Item&#10;- You're name color will  automatically be reset if you don't belong to any Team&#10;- You will only get removed from a Team if you disconnect and the bed is destroyed (from previous if you disconnect)&#10;- Added TNT as an Item&#10;- Moved TntPlaceListener.java into TNTItem.java&#10;- Added Trader.java&#10;- Added Utils::unregisterEvents for Unregistering a Listener&#10;&#10;## Bug Fixes:&#10;- Unable to break Bed due to incorrect Action check with no Sleep and no respawn Point Listener&#10;- Prevented Spawners from Crashing with too many items Servers by not being Loaded&#10;&#10;## Development News:&#10;Now using LeafMC (https://www.leafmc.one/) as a Server Software for Testing (this should not change anything with our compatibility with Spigot and others).&#10;We will most likely update to 1.21.6 in the next few releases" />
   </component>
 </project>

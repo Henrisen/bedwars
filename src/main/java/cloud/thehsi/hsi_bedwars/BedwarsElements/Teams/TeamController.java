@@ -8,13 +8,14 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class TeamController {
     public static List<Team> teams = new ArrayList<>();
+    static Plugin plugin;
+    static final Random rng = new Random(new Date().getTime());
     public static void init(Plugin plugin) {
+        TeamController.plugin = plugin;
         Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             StringBuilder bar = new StringBuilder();
             for (Team team : teams) {
@@ -29,6 +30,7 @@ public class TeamController {
 
     public static void addTeam(Team team) {
         teams.add(team);
+        Bukkit.getPluginManager().registerEvents(team, plugin);
         team.getBed().place();
     }
     public static void addAndRegisterTeam(Team team) {
@@ -63,5 +65,9 @@ public class TeamController {
             if (team.getBed().part1.equals(location) || team.getBed().part2.equals(location)) return team;
         }
         return null;
+    }
+
+    public static Team getRandomTeam() {
+        return teams.get(rng.nextInt(teams.size()));
     }
 }

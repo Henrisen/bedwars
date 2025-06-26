@@ -1,6 +1,7 @@
-package cloud.thehsi.hsi_bedwars.Listeners;
+package cloud.thehsi.hsi_bedwars.Listeners.Custom;
 
 import cloud.thehsi.hsi_bedwars.BuildTracker;
+import cloud.thehsi.hsi_bedwars.Listeners.AdvancedListener;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
@@ -11,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExplosionListener extends AdvancedListener{
+public class ExplosionListener extends AdvancedListener {
     List<Material> unbreakable = new ArrayList<>();
     BuildTracker tracker;
     public ExplosionListener(Plugin plugin, BuildTracker tracker) {

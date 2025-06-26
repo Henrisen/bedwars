@@ -1,24 +1,30 @@
 package cloud.thehsi.hsi_bedwars.BedwarsElements.Teams;
 
+import cloud.thehsi.hsi_bedwars.BedwarsElements.Trader;
+import cloud.thehsi.hsi_bedwars.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Team {
+public class Team implements Listener {
     String color;
     ChatColor chatColor;
     Spawnpoint spawnpoint;
+    Trader trader;
     Bed bed;
     List<Player> players;
 
-    public Team(String color, Location bed1, Location bed2, Location spawnpoint, Plugin plugin) {
+    public Team(String color, Location bed1, Location bed2, Location spawnpoint, Location trader_location, Plugin plugin) {
         players = new ArrayList<>();
         chatColor = switch (color) {
             case "red" -> ChatColor.RED;
@@ -35,6 +41,7 @@ public class Team {
             Bukkit.broadcastMessage(ChatColor.RED + "Unknown Team Color: '" + color + "'");
             return;
         }
+        this.trader = new Trader(trader_location, this, Main.pluginItems, plugin);
         this.color = color;
         this.spawnpoint = new Spawnpoint(spawnpoint, this, plugin);
         this.bed = new Bed(bed1, bed2, this);
@@ -61,6 +68,9 @@ public class Team {
     public Spawnpoint getSpawnpoint() {
         return spawnpoint;
     }
+    public Trader getTrader() {
+        return trader;
+    }
 
     public Bed getBed() {
         return bed;
@@ -71,19 +81,24 @@ public class Team {
     }
 
     public void addPlayer(Player player) {
+        Team pteam = TeamController.getPlayerTeam(player);
+        if (pteam!=null) pteam.removePlayer(player);
+
         players.add(player);
         player.setDisplayName(getChatColor() + player.getName() + ChatColor.RESET);
         player.setPlayerListName(getChatColor() + player.getName() + ChatColor.RESET);
+        player.setCustomName(getChatColor() + player.getName() + ChatColor.RESET);
     }
 
     public void removePlayer(Player player) {
         players.remove(player);
         player.setDisplayName(ChatColor.RESET + player.getName() + ChatColor.RESET);
         player.setPlayerListName(ChatColor.RESET + player.getName() + ChatColor.RESET);
+        player.setCustomName(ChatColor.RESET + player.getName() + ChatColor.RESET);
     }
 
     public void tick() {
-        players.removeIf(player->!player.isOnline());
+        players.removeIf(player->!player.isOnline()&&bed.isDestroyed());
     }
 
     public ChatColor getChatColor() {
@@ -96,5 +111,16 @@ public class Team {
             return Objects.equals(team.color, color);
         }
         return false;
+    }
+
+    public List<Player> players() {
+        return players;
+    }
+
+    @EventHandler
+    private void onPlayerDeath(PlayerDeathEvent event) {
+        Player p = event.getEntity();
+        if (!players.contains(p)) return;
+        if (bed.isDestroyed()) players.remove(p);
     }
 }

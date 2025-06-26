@@ -1,5 +1,6 @@
-package cloud.thehsi.hsi_bedwars.Listeners;
+package cloud.thehsi.hsi_bedwars.Listeners.Custom;
 
+import cloud.thehsi.hsi_bedwars.Listeners.AdvancedListener;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
@@ -7,7 +8,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.Plugin;
 
-public class AntiCropTramplingListener extends AdvancedListener{
+public class AntiCropTramplingListener extends AdvancedListener {
     public AntiCropTramplingListener(Plugin plugin) {
         super(plugin);
     }
