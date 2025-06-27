@@ -222,6 +222,7 @@ public class Utils {
         WorldUnloadEvent.getHandlerList().unregister(l);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static Location rotate(Location l, float yaw, float pitch) {
         l = l.clone();
         l.setYaw(yaw);
