@@ -107,6 +107,7 @@ public class BuildTracker {
             Team playerTeam = TeamController.getPlayerTeam(event.getPlayer());
             if (team != null && !team.equals(playerTeam)) {
                 Utils.broadcastBedDestruct(team, event.getPlayer());
+                team.getBed().remove();
                 event.setDropItems(false);
                 return true;
             } else if (team != null && team.equals(playerTeam))

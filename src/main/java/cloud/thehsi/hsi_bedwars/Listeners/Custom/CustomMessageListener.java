@@ -40,18 +40,23 @@ public class CustomMessageListener extends AdvancedListener {
         event.getEntity().spigot().respawn();
         assert event.getEntity().getLastDamageCause() != null;
         EntityDamageEvent.DamageCause cause = event.getEntity().getLastDamageCause().getCause();
+        Player player = null;
+        //noinspection UnstableApiUsage
+        if (event.getDamageSource().getCausingEntity() instanceof Player p)
+            player = p;
+
         //noinspection UnstableApiUsage
         String causer = event.getDamageSource().getCausingEntity()==null?"":" by "+event.getDamageSource().getCausingEntity().getCustomName()+ChatColor.GRAY;
         Bukkit.broadcastMessage(event.getEntity().getDisplayName() + ChatColor.GRAY + " " + switch (cause) {
             case BLOCK_EXPLOSION, ENTITY_EXPLOSION -> "was blown into pieces" + causer + "!";
             case FALL -> "noticed gravity exists!";
-            case ENTITY_ATTACK, ENTITY_SWEEP_ATTACK -> "was slain" + causer + "!";
+            case ENTITY_ATTACK, ENTITY_SWEEP_ATTACK -> event.getEntity()==player?("committed suicide!"):("was slain" + causer + "!");
             case FIRE, FIRE_TICK, HOT_FLOOR -> "went up in flames!";
             case LAVA -> "took a bath in hot sauce!";
             case WORLD_BORDER -> "left this world!";
             case PROJECTILE -> "got shot" + causer + "!";
             case POISON -> "ate some bad food!";
-            case VOID -> causer.isEmpty()?"fell into the void!":"got pushed into the void" + causer + "!";
+            case VOID -> causer.isBlank()?"fell into the void!":"got pushed into the void" + causer + "!";
             default -> "died!";
         });
         Team team = TeamController.getPlayerTeam(event.getEntity());

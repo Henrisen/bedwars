@@ -2,9 +2,7 @@ package cloud.thehsi.hsi_bedwars.BedwarsElements;
 
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.Team;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.TeamController;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
@@ -222,5 +220,20 @@ public class Utils {
         WorldInitEvent.getHandlerList().unregister(l);
         WorldLoadEvent.getHandlerList().unregister(l);
         WorldUnloadEvent.getHandlerList().unregister(l);
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private static Location rotate(Location l, float yaw, float pitch) {
+        l = l.clone();
+        l.setYaw(yaw);
+        l.setPitch(pitch);
+        return l;
+    }
+
+    public static void killPlayer(Player player) {
+        player.setGameMode(GameMode.SPECTATOR);
+        player.teleport(rotate(JsonParser.getCenter(), 0, 90));
+
+        player.sendTitle(ChatColor.RED + "YOU DIED!", "" , 0 ,80 ,20);
     }
 }

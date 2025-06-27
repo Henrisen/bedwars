@@ -1,5 +1,6 @@
 package cloud.thehsi.hsi_bedwars.BedwarsElements.Spawners;
 
+import cloud.thehsi.hsi_bedwars.BedwarsElements.JsonParser;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -35,8 +36,10 @@ public abstract class BaseSpawner {
         assert world != null;
         if (!world.isChunkLoaded(location.getChunk())) return;
         if (world.getPlayers().isEmpty()) return;
-        Item item = world.dropItem(location, stack);
-        item.setVelocity(item.getVelocity().multiply(.25));
+        for (int i = 0; i < JsonParser.getRates().get(getId()); i++) {
+            Item item = world.dropItem(location, stack);
+            item.setVelocity(item.getVelocity().multiply(.25));
+        }
     }
 
     int countItems(Location location, Material type) {
