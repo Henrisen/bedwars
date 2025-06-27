@@ -37,6 +37,12 @@ public class GameResetCommand extends AdvancedCommand {
             return true;
         }
 
+        reset(plugin, tracker);
+        commandSender.sendMessage(Main.makeDisplay() + "Game has been Reset");
+        return false;
+    }
+
+    public static void reset(Plugin plugin, BuildTracker tracker) {
         tracker.undoChanges();
         SpawnerController.remove();
         TeamController.remove();
@@ -59,8 +65,7 @@ public class GameResetCommand extends AdvancedCommand {
         JsonParser.loadSpawners();
         JsonParser.loadTeams(plugin);
 
-        commandSender.sendMessage(Main.makeDisplay() + "Game has been Reset");
-        return false;
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Game was Reset!");
     }
 
     @Override

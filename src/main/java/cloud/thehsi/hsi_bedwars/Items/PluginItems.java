@@ -32,7 +32,8 @@ public class PluginItems implements Listener {
             BED,
             FIREBALL,
             TNT,
-            SNOWBALL;
+            SNOWBALL,
+            BLAST_PROOF_GLASS;
 
     public PluginItems(Plugin plugin, BuildTracker buildTracker) {
         this.plugin = plugin;
@@ -50,6 +51,7 @@ public class PluginItems implements Listener {
         FIREBALL = registerItem(FireballItem::new);
         TNT = registerItem(TNTItem::new);
         SNOWBALL = registerItem(SnowballItem::new);
+        BLAST_PROOF_GLASS = registerItem(BlastProofGlassItem::new);
 
         task = Bukkit.getScheduler().runTaskTimer(plugin, () -> items.forEach(BaseItem::tick), 1, 1);
         Bukkit.getPluginManager().registerEvents(this, plugin);

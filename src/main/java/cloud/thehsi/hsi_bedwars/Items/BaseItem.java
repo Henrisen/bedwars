@@ -82,6 +82,10 @@ abstract public class BaseItem implements Listener {
         return stack;
     }
 
+    public ItemStack getShopPreviewStack(Player viewer) {
+        return getDefaultStack(viewer);
+    }
+
     private int countInInventory(Player player, Material material) {
         int i=0;
         for (ItemStack stack : player.getInventory()) {
@@ -93,22 +97,34 @@ abstract public class BaseItem implements Listener {
     }
 
     public ItemStack getShopPreview(Player player, int cost, Material costMaterial, String materialName, Integer index) {
-        ItemStack stack = getDefaultStack(player);
+        ItemStack stack = getShopPreviewStack(player);
         ItemMeta meta = stack.getItemMeta();
-        assert meta != null;
+        if (meta == null) {
+            Bukkit.broadcastMessage(ChatColor.RED + "Error in Item '" + this.getId() + "'. Meta is null");
+            return new ItemStack(Material.RED_STAINED_GLASS_PANE, 1);
+        }
+        String itemName = meta.getItemName();
         List<String> lore = new ArrayList<>();
         if (costMaterial == Material.AIR)
             lore.add(ChatColor.GRAY + "Cost: " + ChatColor.WHITE + "FREE");
         else
-            lore.add(ChatColor.GRAY + "Cost: " + ChatColor.WHITE + cost + " " + materialName);
+            lore.add(ChatColor.GRAY + "Cost: " + switch (materialName.toLowerCase()) {
+                case "gold" -> ChatColor.GOLD;
+                case "diamond" -> ChatColor.AQUA;
+                case "emerald" -> ChatColor.DARK_GREEN;
+                default -> ChatColor.WHITE;
+            }  + cost + " " + materialName);
         lore.add("");
         for (String line : description.split("\n"))
             lore.add(ChatColor.GRAY + line);
         lore.add("");
-        if (countInInventory(player, costMaterial) >= cost)
+        if (countInInventory(player, costMaterial) >= cost) {
+            meta.setItemName(ChatColor.GREEN + itemName);
             lore.add(ChatColor.YELLOW + "Click to purchase!");
-        else
+        }else {
+            meta.setItemName(ChatColor.RED + itemName);
             lore.add(ChatColor.RED + "You don't have enough " + materialName);
+        }
         meta.setLore(lore);
         meta.getPersistentDataContainer().set(
                 new NamespacedKey(plugin, "store_id"),

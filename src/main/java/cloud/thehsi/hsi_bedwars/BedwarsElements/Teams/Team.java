@@ -61,6 +61,20 @@ public class Team implements Listener {
         };
     }
 
+    public Material getGlass() {
+        return switch (color) {
+            case "red" -> Material.RED_STAINED_GLASS;
+            case "orange" -> Material.ORANGE_STAINED_GLASS;
+            case "yellow" -> Material.YELLOW_STAINED_GLASS;
+            case "green" -> Material.LIME_STAINED_GLASS;
+            case "blue" -> Material.LIGHT_BLUE_STAINED_GLASS;
+            case "purple" -> Material.PURPLE_STAINED_GLASS;
+            case "pink" -> Material.PINK_STAINED_GLASS;
+            case "white" -> Material.WHITE_STAINED_GLASS;
+            default -> null;
+        };
+    }
+
     public String renderIcon() {
         return getChatColor() + (bed.isDestroyed() ? "░" : "█");
     }

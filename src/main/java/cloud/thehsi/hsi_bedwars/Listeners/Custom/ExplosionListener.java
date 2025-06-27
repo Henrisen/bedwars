@@ -9,32 +9,33 @@ import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.plugin.Plugin;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ExplosionListener extends AdvancedListener {
-    List<Material> unbreakable = new ArrayList<>();
+    List<Material> unbreakable = List.of(
+            Material.RED_STAINED_GLASS,
+            Material.ORANGE_STAINED_GLASS,
+            Material.YELLOW_STAINED_GLASS,
+            Material.LIME_STAINED_GLASS,
+            Material.LIGHT_BLUE_STAINED_GLASS,
+            Material.PURPLE_STAINED_GLASS,
+            Material.PINK_STAINED_GLASS,
+            Material.WHITE_STAINED_GLASS,
+            Material.RED_BED,
+            Material.ORANGE_BED,
+            Material.YELLOW_BED,
+            Material.LIME_BED,
+            Material.LIGHT_BLUE_BED,
+            Material.PURPLE_BED,
+            Material.PINK_BED,
+            Material.WHITE_BED,
+            Material.OBSIDIAN
+    );
+
     BuildTracker tracker;
     public ExplosionListener(Plugin plugin, BuildTracker tracker) {
         super(plugin);
         this.tracker = tracker;
-        unbreakable.add(Material.RED_STAINED_GLASS);
-        unbreakable.add(Material.ORANGE_STAINED_GLASS);
-        unbreakable.add(Material.YELLOW_STAINED_GLASS);
-        unbreakable.add(Material.LIME_STAINED_GLASS);
-        unbreakable.add(Material.LIGHT_BLUE_STAINED_GLASS);
-        unbreakable.add(Material.PURPLE_STAINED_GLASS);
-        unbreakable.add(Material.PINK_STAINED_GLASS);
-        unbreakable.add(Material.WHITE_STAINED_GLASS);
-        unbreakable.add(Material.RED_BED);
-        unbreakable.add(Material.ORANGE_BED);
-        unbreakable.add(Material.YELLOW_BED);
-        unbreakable.add(Material.LIME_BED);
-        unbreakable.add(Material.LIGHT_BLUE_BED);
-        unbreakable.add(Material.PURPLE_BED);
-        unbreakable.add(Material.PINK_BED);
-        unbreakable.add(Material.WHITE_BED);
-        unbreakable.add(Material.OBSIDIAN);
     }
 
     @EventHandler

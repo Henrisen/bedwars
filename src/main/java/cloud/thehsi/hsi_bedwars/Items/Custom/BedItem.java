@@ -34,6 +34,8 @@ public class BedItem extends BaseItem {
     @Override
     public ItemStack inventoryTick(Player player, ItemStack stack) {
         Team team = TeamController.getPlayerTeam(player);
+        ItemMeta meta = stack.getItemMeta();
+        assert meta != null;
         if (team == null) {
             stack.setAmount(0);
         }else if (team.getBed().isDestroyed()) {
@@ -42,13 +44,32 @@ public class BedItem extends BaseItem {
             stack.setAmount(0);
         } else {
             stack.setType(team.getBed().getBedType());
-            ItemMeta meta = stack.getItemMeta();
-            assert meta != null;
             String color = team.getColor().toLowerCase();
             color = color.substring(0,1).toUpperCase() + color.substring(1);
             meta.setItemName(color + " Replacement Bed");
             stack.setItemMeta(meta);
         }
+        return stack;
+    }
+
+    @Override
+    public ItemStack getShopPreviewStack(Player viewer) {
+        ItemStack stack = getDefaultStack();
+        Team team = TeamController.getPlayerTeam(viewer);
+        ItemMeta meta = stack.getItemMeta();
+        assert meta != null;
+        if (team == null) {
+            stack.setType(Material.RED_BED);
+            meta = stack.getItemMeta();
+            meta.setItemName("Red Replacement Bed");
+        } else {
+            stack.setType(team.getBed().getBedType());
+            meta = stack.getItemMeta();
+            String color = team.getColor().toLowerCase();
+            color = color.substring(0,1).toUpperCase() + color.substring(1);
+            meta.setItemName(color + " Replacement Bed");
+        }
+        stack.setItemMeta(meta);
         return stack;
     }
 

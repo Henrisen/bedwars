@@ -14,8 +14,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class Main extends JavaPlugin {
     BuildTracker tracker = new BuildTracker();
     public static PluginItems pluginItems;
+    public static boolean initialized = false;
     @Override
     public void onEnable() {
+        if (!Bukkit.getOnlinePlayers().isEmpty()) initialized = true;
         for (Entity entity : Bukkit.getWorlds().getFirst().getEntities()) {
             if (!(entity instanceof Player)) entity.remove();
         }
