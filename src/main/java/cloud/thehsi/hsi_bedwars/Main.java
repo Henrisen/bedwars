@@ -15,6 +15,13 @@ public final class Main extends JavaPlugin {
     BuildTracker tracker = new BuildTracker();
     public static PluginItems pluginItems;
     public static boolean initialized = false;
+    /**
+     * Initializes the Bedwars plugin when enabled.
+     *
+     * Sets up plugin state, configures world game rules, removes non-player entities from the first world,
+     * registers event listeners and commands, initializes controllers, and loads configuration data.
+     * Marks the plugin as initialized if any players are online at startup.
+     */
     @Override
     public void onEnable() {
         if (!Bukkit.getOnlinePlayers().isEmpty()) initialized = true;

@@ -66,6 +66,12 @@ abstract public class BaseItem implements Listener {
         return stack;
     }
 
+    /**
+     * Creates a new ItemStack of this item type for the specified player, applies custom metadata and modifications, and performs an inventory tick on the stack.
+     *
+     * @param player the player for whom the item stack is created
+     * @return the customized ItemStack for this item and player
+     */
     public ItemStack getDefaultStack(Player player) {
         ItemStack stack = new ItemStack(itemType, 1);
         ItemMeta meta = stack.getItemMeta();
@@ -82,10 +88,23 @@ abstract public class BaseItem implements Listener {
         return stack;
     }
 
+    /**
+     * Returns a preview ItemStack of this item for the specified player, suitable for display in shop interfaces.
+     *
+     * @param viewer the player for whom the preview is generated
+     * @return an ItemStack representing this item as it would appear to the given player
+     */
     public ItemStack getShopPreviewStack(Player viewer) {
         return getDefaultStack(viewer);
     }
 
+    /**
+     * Counts the total quantity of a specific material in the given player's inventory.
+     *
+     * @param player   the player whose inventory is checked
+     * @param material the material type to count
+     * @return the total number of items of the specified material in the player's inventory
+     */
     private int countInInventory(Player player, Material material) {
         int i=0;
         for (ItemStack stack : player.getInventory()) {
@@ -96,6 +115,18 @@ abstract public class BaseItem implements Listener {
         return i;
     }
 
+    /**
+     * Generates a shop preview ItemStack for the player, displaying cost, description, and purchase eligibility.
+     *
+     * The preview stack includes colored cost information, item description, and a prompt or warning based on whether the player has enough of the required material. If the item meta is missing, returns a red stained glass pane as an error indicator.
+     *
+     * @param player the player viewing the shop preview
+     * @param cost the amount of the cost material required to purchase the item
+     * @param costMaterial the material used as currency for the item
+     * @param materialName the display name of the cost material
+     * @param index the store index for persistent data tagging
+     * @return an ItemStack representing the shop preview for this item
+     */
     public ItemStack getShopPreview(Player player, int cost, Material costMaterial, String materialName, Integer index) {
         ItemStack stack = getShopPreviewStack(player);
         ItemMeta meta = stack.getItemMeta();

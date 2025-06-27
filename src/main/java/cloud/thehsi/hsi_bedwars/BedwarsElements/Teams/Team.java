@@ -47,6 +47,11 @@ public class Team implements Listener {
         this.bed = new Bed(bed1, bed2, this);
     }
 
+    /**
+     * Returns the wool material corresponding to the team's color.
+     *
+     * @return the Material representing the team's wool color, or null if the color is unknown
+     */
     public Material getWool() {
         return switch (color) {
             case "red" -> Material.RED_WOOL;
@@ -61,6 +66,11 @@ public class Team implements Listener {
         };
     }
 
+    /**
+     * Returns the stained glass material corresponding to the team's color.
+     *
+     * @return the Material for the team's stained glass, or null if the color is unknown
+     */
     public Material getGlass() {
         return switch (color) {
             case "red" -> Material.RED_STAINED_GLASS;
@@ -75,6 +85,13 @@ public class Team implements Listener {
         };
     }
 
+    /**
+     * Returns a colored icon representing the team's bed status.
+     *
+     * The icon is a solid block if the bed is intact, or a light block if the bed is destroyed, both colored with the team's chat color.
+     *
+     * @return a string containing the team's chat color and a block character indicating bed status
+     */
     public String renderIcon() {
         return getChatColor() + (bed.isDestroyed() ? "░" : "█");
     }

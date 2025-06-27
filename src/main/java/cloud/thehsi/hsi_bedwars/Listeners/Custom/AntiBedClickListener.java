@@ -18,6 +18,13 @@ public class AntiBedClickListener extends AdvancedListener {
         super(plugin);
     }
 
+    /**
+     * Cancels right-click interactions with bed blocks unless the player is sneaking and holding a block item.
+     *
+     * This event handler prevents players from interacting with bed blocks by right-clicking, except when the player is sneaking and holding a block-type item in either hand, in which case the interaction is allowed.
+     *
+     * @param event the player interaction event being handled
+     */
     @EventHandler
     private void bedClick(PlayerInteractEvent event) {
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;

@@ -33,11 +33,24 @@ public class ExplosionListener extends AdvancedListener {
     );
 
     BuildTracker tracker;
+    /**
+     * Constructs an ExplosionListener to manage explosion events with block protection logic.
+     *
+     * @param plugin   the plugin instance this listener is associated with
+     * @param tracker  the build tracker used to determine block break permissions
+     */
     public ExplosionListener(Plugin plugin, BuildTracker tracker) {
         super(plugin);
         this.tracker = tracker;
     }
 
+    /**
+     * Handles block explosion events by removing blocks from the explosion's affected list if they are unbreakable or protected.
+     *
+     * Blocks that cannot be destroyed, as determined by the unbreakable list or the build tracker, are excluded from the explosion's impact.
+     *
+     * @param event the block explosion event containing the list of affected blocks
+     */
     @EventHandler
     private void explosionBlock(BlockExplodeEvent event) {
         event.blockList().removeIf(this::cantBlowUpBlock);

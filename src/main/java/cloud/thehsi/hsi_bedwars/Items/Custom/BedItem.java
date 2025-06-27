@@ -31,6 +31,13 @@ public class BedItem extends BaseItem {
 
     @Override
     public void onUse(PlayerInteractEvent event) {}
+    /**
+     * Updates the replacement bed item in the player's inventory based on their team and bed status.
+     *
+     * If the player is not on a team, the item is removed. If the team's bed is destroyed, the bed is replaced and the item is consumed. Otherwise, the item's appearance and name are updated to match the team's color.
+     *
+     * @return the updated ItemStack reflecting the current team and bed state
+     */
     @Override
     public ItemStack inventoryTick(Player player, ItemStack stack) {
         Team team = TeamController.getPlayerTeam(player);
@@ -52,6 +59,14 @@ public class BedItem extends BaseItem {
         return stack;
     }
 
+    /**
+     * Generates a preview ItemStack for the shop UI, displaying a replacement bed item customized to the viewer's team color.
+     *
+     * If the viewer is not on a team, the preview defaults to a red replacement bed.
+     *
+     * @param viewer the player viewing the shop
+     * @return an ItemStack representing the replacement bed for the viewer's team
+     */
     @Override
     public ItemStack getShopPreviewStack(Player viewer) {
         ItemStack stack = getDefaultStack();
@@ -73,6 +88,14 @@ public class BedItem extends BaseItem {
         return stack;
     }
 
+    /**
+     * Prevents placement of the replacement bed item and returns it to the player's inventory.
+     *
+     * Cancels the block placement event if the player attempts to place a replacement bed item,
+     * and adds a default replacement bed item back to the player's inventory.
+     *
+     * @param event the block placement event triggered by the player
+     */
     @EventHandler
     private void onPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();

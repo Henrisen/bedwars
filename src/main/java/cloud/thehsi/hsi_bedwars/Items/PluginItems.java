@@ -35,6 +35,12 @@ public class PluginItems implements Listener {
             SNOWBALL,
             BLAST_PROOF_GLASS;
 
+    /**
+     * Initializes and registers all custom Bedwars items, sets up periodic ticking, and registers event listeners for item management.
+     *
+     * @param plugin the Bukkit plugin instance
+     * @param buildTracker the build tracker used for item-related operations
+     */
     public PluginItems(Plugin plugin, BuildTracker buildTracker) {
         this.plugin = plugin;
         this.buildTracker = buildTracker;

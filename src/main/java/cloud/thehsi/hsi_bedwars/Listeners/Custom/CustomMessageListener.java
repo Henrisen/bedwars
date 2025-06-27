@@ -22,6 +22,12 @@ import java.util.List;
 
 public class CustomMessageListener extends AdvancedListener {
     BuildTracker tracker;
+    /**
+     * Constructs a CustomMessageListener with the specified plugin and build tracker.
+     *
+     * @param plugin  the plugin instance associated with this listener
+     * @param tracker the BuildTracker used for tracking building-related data
+     */
     public CustomMessageListener(Plugin plugin, BuildTracker tracker) {
         super(plugin);
         this.tracker = tracker;
@@ -59,6 +65,13 @@ public class CustomMessageListener extends AdvancedListener {
         team.getSpawnpoint().respawnPlayer(event.getEntity());
     }
 
+    /**
+     * Handles player join events by sending a welcome message, initializing the game if needed, updating player display names, and managing respawn logic based on team membership.
+     *
+     * If the game is not initialized, triggers a game reset. Sets the player's display names to their default if they are not on a team. Announces the player's connection and respawns players who are flagged for respawn and belong to a team.
+     *
+     * @param event The player join event.
+     */
     @EventHandler
     private void onJoin(PlayerJoinEvent event) {
         event.getPlayer().sendMessage(ChatColor.GREEN.toString() + ChatColor.BOLD + "▬".repeat(71));

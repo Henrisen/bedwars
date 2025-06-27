@@ -15,6 +15,11 @@ public class PluginListeners {
     BuildTracker tracker;
     PluginItems pluginItems;
 
+    /**
+     * Registers all event listeners required by the plugin with the Bukkit plugin manager.
+     *
+     * This method initializes and registers each listener, ensuring they are active for handling relevant events during the plugin's lifecycle.
+     */
     private void register() {
         registerListener(plugin -> new BuildTrackerListener(plugin, tracker));
         registerListener(plugin -> new ExplosionListener(plugin, tracker));

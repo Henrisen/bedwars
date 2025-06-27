@@ -30,6 +30,13 @@ public class GameResetCommand extends AdvancedCommand {
         this.tracker = tracker;
     }
 
+    /**
+     * Handles the execution of the /game_reset command, resetting the game state if no arguments are provided.
+     *
+     * Sends a usage message if arguments are present. Otherwise, performs a full game reset and notifies the sender.
+     *
+     * @return true if incorrect usage; false if the game was reset successfully.
+     */
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, String[] strings) {
         if (strings.length != 0) {
@@ -42,6 +49,14 @@ public class GameResetCommand extends AdvancedCommand {
         return false;
     }
 
+    /**
+     * Resets the game environment to its initial state.
+     *
+     * This method undoes all tracked build changes, removes spawners and teams, clears plugin items,
+     * removes all non-player entities from the first loaded world, and sets specific game rules across all worlds.
+     * It then reinitializes plugin items, spawner and team controllers, reloads configuration and data files,
+     * and sends a confirmation message to the server console.
+     */
     public static void reset(Plugin plugin, BuildTracker tracker) {
         tracker.undoChanges();
         SpawnerController.remove();
@@ -68,6 +83,13 @@ public class GameResetCommand extends AdvancedCommand {
         Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Game was Reset!");
     }
 
+    /**
+     * Provides tab completion suggestions for the game reset command.
+     *
+     * Suggests item IDs when the first argument is being entered, numbers 1 to 64 for the second argument, and an empty suggestion otherwise.
+     *
+     * @return a list of suggested completions based on the current argument position
+     */
     @Override
     public List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, String[] strings) {
         List<String> suggest = new ArrayList<>();

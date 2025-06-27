@@ -22,6 +22,13 @@ public class ICommand extends AdvancedCommand {
         super(plugin);
     }
 
+    /**
+     * Handles the execution of the item-giving command, allowing players or administrators to give custom items to themselves or other players.
+     *
+     * Depending on the number of arguments, this command gives a specified item in a specified amount to either the command sender or a target player. It validates item existence, player presence, and amount input, and provides feedback messages for errors or successful actions.
+     *
+     * Returns {@code false} in all cases to indicate that the command's usage message should be displayed if execution fails or is incomplete.
+     */
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, String[] strings) {
         BaseItem givenItem;
@@ -110,6 +117,13 @@ public class ICommand extends AdvancedCommand {
         return false;
     }
 
+    /**
+     * Provides tab completion suggestions for the item-giving command based on the current argument position.
+     *
+     * Suggests item IDs for the first argument, possible item counts (1–64) for the second argument, and online player names for the third argument, each filtered by the current input.
+     *
+     * @return a list of suggested completions relevant to the current argument.
+     */
     @Override
     public List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, String[] strings) {
         List<String> suggest = new ArrayList<>();

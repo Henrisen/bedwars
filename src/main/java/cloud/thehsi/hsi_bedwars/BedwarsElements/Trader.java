@@ -153,6 +153,15 @@ public class Trader implements Listener {
         }
     }
 
+    /**
+     * Handles clicks within the trader's shop inventory, processing item purchases.
+     *
+     * Validates the clicked item as a tradeable shop item, checks if the player has enough resources,
+     * removes the cost from the player's inventory, and adds the purchased item(s) if space is available.
+     * If the player lacks resources or inventory space, sends an appropriate message and cancels the purchase.
+     *
+     * @param event The inventory click event triggered by the player.
+     */
     @EventHandler
     private void onItemClick(InventoryClickEvent event) {
         if (event.getClick() == ClickType.DOUBLE_CLICK) return;

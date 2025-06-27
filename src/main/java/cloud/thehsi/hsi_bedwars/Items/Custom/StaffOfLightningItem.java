@@ -20,6 +20,11 @@ public class StaffOfLightningItem extends BaseItem {
         super(provider, Material.BLAZE_ROD, "staff_of_lightning", "Staff of Lightning", false, false, "Freezes Everyone for 2 Seconds,\nShrinks and Slows everyone\nfor 7 Seconds", meta -> {meta.setRarity(ItemRarity.RARE);meta.setMaxStackSize(1);meta.setEnchantmentGlintOverride(true);return meta;});
     }
 
+    /**
+     * Activates the Staff of Lightning's effect when used, applying lightning strikes and status effects to all online players.
+     *
+     * When a player right-clicks with the item, all players are struck by lightning, frozen in place for 2 seconds, and then remain shrunk and slowed for an additional 7 seconds before their attributes are restored.
+     */
     @Override
     public void onUse(PlayerInteractEvent event) {
         if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
