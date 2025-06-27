@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.Inventory;
@@ -154,6 +155,7 @@ public class Trader implements Listener {
 
     @EventHandler
     private void onItemClick(InventoryClickEvent event) {
+        if (event.getClick() == ClickType.DOUBLE_CLICK) return;
         if (event.getClickedInventory() == null) return;
         if (event.getClickedInventory().getHolder() != villager) return;
         ItemStack stack = event.getCurrentItem();
@@ -169,7 +171,7 @@ public class Trader implements Listener {
         Player player = (Player) event.getWhoClicked();
         List<TradeableItem> items = JsonParser.getTrades();
         if (items.size() <= index) return;
-        if (index > 0) return;
+        if (index < 0) return;
         TradeableItem item = JsonParser.getTrades().get(index);
         if (item == null) return;
         int count = countInInventory(player, item.costMaterial);

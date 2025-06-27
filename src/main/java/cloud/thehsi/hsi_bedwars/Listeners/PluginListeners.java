@@ -20,7 +20,7 @@ public class PluginListeners {
         registerListener(plugin -> new ExplosionListener(plugin, tracker));
         registerListener(AntiCropTramplingListener::new);
         registerListener(plugin -> new AntiDirtPathDestructionListener(plugin, tracker));
-        registerListener(CustomMessageListener::new);
+        registerListener(plugin -> new CustomMessageListener(plugin, tracker));
         registerListener(PlayerMovementListener::new);
         registerListener(MovementSpeedFixListener::new);
         registerListener(AntiBedClickListener::new);

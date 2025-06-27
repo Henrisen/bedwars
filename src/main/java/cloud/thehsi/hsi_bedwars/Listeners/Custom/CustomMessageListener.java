@@ -2,7 +2,10 @@ package cloud.thehsi.hsi_bedwars.Listeners.Custom;
 
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.Team;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.TeamController;
+import cloud.thehsi.hsi_bedwars.BuildTracker;
+import cloud.thehsi.hsi_bedwars.Commands.GameResetCommand;
 import cloud.thehsi.hsi_bedwars.Listeners.AdvancedListener;
+import cloud.thehsi.hsi_bedwars.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -18,8 +21,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomMessageListener extends AdvancedListener {
-    public CustomMessageListener(Plugin plugin) {
+    BuildTracker tracker;
+    public CustomMessageListener(Plugin plugin, BuildTracker tracker) {
         super(plugin);
+        this.tracker = tracker;
     }
     public static List<Player> respawnOnJoin = new ArrayList<>();
 
@@ -65,6 +70,11 @@ public class CustomMessageListener extends AdvancedListener {
         event.getPlayer().sendMessage(ChatColor.YELLOW.toString() + ChatColor.BOLD + "              to access powerful upgrades.");
         event.getPlayer().sendMessage("");
         event.getPlayer().sendMessage(ChatColor.GREEN.toString() + ChatColor.BOLD + "▬".repeat(71));
+
+        if (!Main.initialized) {
+            GameResetCommand.reset(plugin, tracker);
+            Main.initialized = true;
+        }
 
         Team team = TeamController.getPlayerTeam(event.getPlayer());
         if (team == null) {

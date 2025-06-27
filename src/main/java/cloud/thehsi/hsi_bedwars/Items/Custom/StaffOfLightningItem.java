@@ -22,7 +22,7 @@ public class StaffOfLightningItem extends BaseItem {
 
     @Override
     public void onUse(PlayerInteractEvent event) {
-        if (event.getAction() != Action.RIGHT_CLICK_AIR || event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         ItemStack stack = event.getItem();
         assert stack != null;
         stack.setAmount(stack.getAmount()-1);
