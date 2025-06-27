@@ -49,6 +49,7 @@ abstract public class BaseItem implements Listener {
 
     public String getId() {return itemId;}
     public String getName() {return itemName;}
+    public Material getType() {return itemType;}
     public BuildTracker getBuildTracker() {return buildTracker;}
 
     public ItemStack getDefaultStack() {
@@ -189,4 +190,6 @@ abstract public class BaseItem implements Listener {
             }
         }
     }
+
+    public void remove() {}
 }

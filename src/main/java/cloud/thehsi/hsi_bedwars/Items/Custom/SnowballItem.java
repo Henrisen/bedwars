@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemRarity;
@@ -21,7 +22,15 @@ public class SnowballItem extends BaseItem {
     }
 
     @Override
-    public void onUse(PlayerInteractEvent event) {}
+    public void onUse(PlayerInteractEvent event) {
+        if (event.getAction() != Action.LEFT_CLICK_AIR && event.getAction() != Action.LEFT_CLICK_BLOCK)
+            return;
+        if (event.getPlayer().getCooldown(getType()) != 0) {
+            event.setCancelled(true);
+        }else {
+            event.getPlayer().setCooldown(getType(), 20);
+        }
+    }
 
     @EventHandler
     private void snowballHitPlayer(ProjectileHitEvent event) {

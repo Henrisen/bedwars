@@ -8,10 +8,7 @@ import cloud.thehsi.hsi_bedwars.BedwarsElements.Spawners.Custom.IronSpawner;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.Team;
 import cloud.thehsi.hsi_bedwars.BedwarsElements.Teams.TeamController;
 import cloud.thehsi.hsi_bedwars.Items.BaseItem;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -19,15 +16,12 @@ import org.bukkit.Material;
 import org.bukkit.plugin.Plugin;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import static cloud.thehsi.hsi_bedwars.Main.pluginItems;
 
 public class JsonParser {
-    static final Gson gson = new Gson();
+    static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     static File config = new File("./world/bedwars.json");
     static JsonObject json = null;
     public static void loadFile() {
@@ -44,7 +38,8 @@ public class JsonParser {
                         {
                             "teams": {},
                             "spawners": [],
-                            "trades": []
+                            "trades": [],
+                            "rates": [{"type":"iron","rate":1},{"type":"gold","rate":1},{"type":"diamond","rate":1},{"type":"emerald","rate":1}]
                         }""");
             } catch (IOException ex) {throw new RuntimeException(ex);}
             try {
@@ -132,6 +127,38 @@ public class JsonParser {
             tradeableItems.add(tradeableItem);
         }
         return tradeableItems;
+    }
+
+    public static class SpawnerRates {
+        Map<String, Integer> rates = new HashMap<>();
+        public SpawnerRates() {}
+
+        @SuppressWarnings("UnusedReturnValue")
+        public SpawnerRates set(String spawner, Integer rate) {
+            rates.put(spawner, rate);
+            return this;
+        }
+
+        public Integer get(String spawner) {
+            Integer result = rates.get(spawner);
+            return result==null?0:result;
+        }
+    }
+
+    public static SpawnerRates getRates() {
+        JsonArray rates = json.get("rates").getAsJsonArray();
+        SpawnerRates spawnerRates = new SpawnerRates();
+        for (JsonElement rateElm : rates) {
+            if (!(rateElm instanceof JsonObject)) {
+                Bukkit.broadcastMessage(ChatColor.RED + "Rates malformed, invalid Type in rates. Disabling Spawners!");
+                return new SpawnerRates();
+            }
+            JsonObject rateObj = rateElm.getAsJsonObject();
+            String type = rateObj.get("type").getAsString();
+            Integer rate = rateObj.get("rate").getAsInt();
+            spawnerRates.set(type, rate);
+        }
+        return spawnerRates;
     }
 
     public static Location getCenter() {

@@ -33,7 +33,12 @@ public class PluginItems implements Listener {
             FIREBALL,
             TNT,
             SNOWBALL,
-            BLAST_PROOF_GLASS;
+            BLAST_PROOF_GLASS,
+            END_STONE,
+            WOOD_PLANKS,
+            CHEST,
+            POPUP_SHOP,
+            KNOCKBACK_STICK;
 
     public PluginItems(Plugin plugin, BuildTracker buildTracker) {
         this.plugin = plugin;
@@ -52,6 +57,11 @@ public class PluginItems implements Listener {
         TNT = registerItem(TNTItem::new);
         SNOWBALL = registerItem(SnowballItem::new);
         BLAST_PROOF_GLASS = registerItem(BlastProofGlassItem::new);
+        END_STONE = registerItem(EndStoneItem::new);
+        WOOD_PLANKS = registerItem(WoodPlanksItem::new);
+        CHEST = registerItem(ChestItem::new);
+        POPUP_SHOP = registerItem(PopupShopItem::new);
+        KNOCKBACK_STICK = registerItem(KnockBackStickItem::new);
 
         task = Bukkit.getScheduler().runTaskTimer(plugin, () -> items.forEach(BaseItem::tick), 1, 1);
         Bukkit.getPluginManager().registerEvents(this, plugin);
@@ -60,6 +70,7 @@ public class PluginItems implements Listener {
     public void remove() {
         task.cancel();
         for (BaseItem item : items) {
+            item.remove();
             Utils.unregisterEvents(item);
         }
         items.clear();

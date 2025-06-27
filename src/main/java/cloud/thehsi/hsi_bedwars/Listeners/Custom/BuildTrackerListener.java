@@ -2,6 +2,8 @@ package cloud.thehsi.hsi_bedwars.Listeners.Custom;
 
 import cloud.thehsi.hsi_bedwars.BuildTracker;
 import cloud.thehsi.hsi_bedwars.Listeners.AdvancedListener;
+import org.bukkit.Material;
+import org.bukkit.block.data.type.Chest;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -25,6 +27,15 @@ public class BuildTrackerListener extends AdvancedListener {
 
     @EventHandler
     private void onBlockUpdate(BlockPhysicsEvent event) {
-        event.setCancelled(tracker.canBreak(event.getBlock()));
+        if (event.getBlock().getType() == Material.CHEST) {
+            Chest chest = (Chest) event.getBlock().getBlockData().clone();
+            event.getBlock().setType(Material.CHEST, false);
+            Chest chest_new = (Chest) Material.CHEST.createBlockData();
+            chest_new.setFacing(chest.getFacing());
+            event.getBlock().setBlockData(chest_new, false);
+            event.setCancelled(true);
+            return;
+        }
+        event.setCancelled(!tracker.canBreak(event.getBlock()));
     }
 }

@@ -103,4 +103,9 @@ public class WoolItem extends BaseItem {
         event.setDropItems(false);
         event.getBlock().getWorld().dropItemNaturally(l.add(.5,.5,.5), getDefaultStack(event.getPlayer()));
     }
+
+    @Override
+    public void remove() {
+        woolLocations.clear();
+    }
 }

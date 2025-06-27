@@ -41,6 +41,7 @@ public class BedItem extends BaseItem {
         }else if (team.getBed().isDestroyed()) {
             team.getBed().place();
             Utils.broadcastBedReplacement(team, player);
+            team.getBed().remove();
             stack.setAmount(0);
         } else {
             stack.setType(team.getBed().getBedType());
